@@ -22,16 +22,6 @@ fn main() {
 	}
 }
 
-// fn test() {
-// 	mut i := 0
-// 	for {
-// 		mut t := io.Teststr{}
-// 		println("$i | $t.buffer")
-// 		i += 1
-// 		time.sleep(2)
-// 	}
-// }
-
 fn listener() {
 	mut server := net.listen_tcp(.ip6, ':3000') or {
 		panic("[x] Error, Unable to start server!\r\n")
@@ -49,20 +39,27 @@ fn handle_client(mut socket net.TcpConn) {
 	mut current_ip := socket.peer_addr() or { return } //User's IP
 	println('> new client: $current_ip')
 
-	socket.write_str("Username: ") or { panic("[x] Error") }
-	username := socket.read_line()
-	socket_write_str("Password: ") or { panic("[x] Error") }
-	password := socket.read_line()
+	socket.write_string("Username: ") or { panic("[x] Error") }
+	socket.wait_for_read() or { panic("[x] Error") }
+	username := socket.read_line().replace("\r\n","")
+	socket.write_string("Password: ") or { panic("[x] Error") }
+	socket.wait_for_read() or { panic("[x] Error") }
+	password := socket.read_line().replace("\r\n", "")
+
+	mut a := auth.AuthInfo{username: username, password: password}
+	mut login := a.login()
+	if login.contains("[+]") {
+		//append user to arr
+		socket.write_string(login) or { panic("[x]") }
+	} else {
+		socket.write_string(login) or { panic("[x]") }
+		socket.close() or { panic("[x]") }
+	}
 	
-	//command handler
+	socket.write_string("\r\x1b[37m╔═[\x1b[35mWocky\x1b[37m@\x1b[35mII\x1b[37m]\r\n╚════➢\x1b[32m ") or { panic("[x]") }
 	for {
-		data := socket.read_line()
-		server.cmd_handler(mut socket, data)
+		server.cmd_handler(mut socket)
 	}
 	
 	reader.free()
-}
-
-fn command_handler(mut socket net.TcpConn) {
-
 }
