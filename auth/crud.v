@@ -59,11 +59,10 @@ pub fn (mut a Crud) userline() string {
 	mut users := os.read_lines('/root/Wocky/db/users.db') or {
 		panic("[x] Error, Couldn't read USER database!\r\n")
 	}
-
 	for user in users {
 		if user.len > 5 {
 			if user.contains("('$a.user','") {
-				return ((user.replace("('","")).replace("')", "")).replace("','", ",")
+				return (((user.replace("('","")).replace("')", "")).replace("','", ",")).replace(" ", "")
 			}
 		}
 	}
