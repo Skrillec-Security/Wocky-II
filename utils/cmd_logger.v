@@ -1,5 +1,7 @@
 module utils
 
+import os
+
 pub struct LoggerUtils {
 	pub mut:
 		current_usr string
@@ -7,7 +9,7 @@ pub struct LoggerUtils {
 		log_msg string
 }
 
-pub fn (mut u LoggerUtils) change_logType(logtype int) {
+pub fn (mut u LoggerUtils) change_logtype(logtype int) {
 	u.log_type = logtype 
 }
 
@@ -16,17 +18,19 @@ pub fn (mut u LoggerUtils) main(logmsg string) {
 		0 { "Command"}
 		1 { "Attack" }
 		2 { "Login" }
-		else { none }
+		else { "" }
 	}
 
 	mut logthis := "[Log Type]: $logtype | ["
 }
 
 pub fn (mut u LoggerUtils) log_cmd(logmsg string) {
-	mut file_d = os.open('/root/Wocky/db/logs/cmds.db') or {
+	mut file_d := os.open('/root/Wocky/db/logs/cmds.db') or {
 		panic("[x] Error, Couldn't read CMD LOGs database!\r\n")
 	}
 
-	file_d.write("$logmsg".bytes())
+	file_d.write("$logmsg".bytes()) or {
+		panic("[x] Error, Unable to write to file!\r\n")
+	}
 	file_d.close()
 }
