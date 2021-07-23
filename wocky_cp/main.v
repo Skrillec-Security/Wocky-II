@@ -4,6 +4,8 @@ import os
 import net.http
 import banner_sys
 import config
+import time
+import server
 
 // method -> licence_validation()
 // note -> licence based botnet 
@@ -17,11 +19,26 @@ pub fn licence_valiation() {
 			println("[x] Access denied, Invalid token!")
 		} else if token_check.contains("[+]") {
 			println("[x] Access Granted! | $token")
+			time.sleep(3)
+			println(config.Clear)
 			println(help_banner())
 		}
 	} else {
 		println("[x] Access denied, Invalid Token!\r\n")
 		exit(0)
+	}
+}
+
+pub fn command_handler() {
+	for {
+		mut inputcmd := os.input("[Wocky@II]# [~] $ ")
+		if inputcmd != "" {
+			if inputcmd == "help" {
+				println(config.Clear + help_banner())
+			} else if inputcmd == "clear" {
+				println(config.Clear)
+			}
+		}
 	}
 }
 
@@ -35,7 +52,7 @@ pub fn conn_check()? {
 
 pub fn help_banner() string { 
 	mut bnnr := ''
-	bnnr += "Welcome To Wocky II Server Side | Coded In: V | Created By: vZy                    [v2.0.0]\r\n"
+	bnnr += "Welcome To Wocky II Server Side | Coded In: V | Created By: vZy        [v2.0.0]\r\n"
 	bnnr += "        Tools              Description\r\n"
 	bnnr += "_______________________________________________________________\r\n"
 	bnnr += "      - users             Check online users\r\n"
@@ -43,4 +60,14 @@ pub fn help_banner() string {
 	bnnr += "      - kick              Kick a user\r\n"
 	bnnr += "      - usage             Show CPU & MEM Usage of the net\r\n\r\n"
 	return bnnr
+}
+
+pub fn port_check(arg []string) string {
+	mut arg_c := arg.len
+	if arg_c == 2 {
+		return arg[1].replace("-p", "")
+	} else {
+		println("[x] Error, Invalid argument\r\nUsage: ./wocky -p<port>\r\nExample: ./wocky -p465")
+		exit(0)
+	}
 }
