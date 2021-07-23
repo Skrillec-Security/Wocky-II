@@ -4,14 +4,10 @@ import net
 import banner_sys
 import config 
 
-pub struct Clients {
-	id int
-mut:
-	conn net.TcpConn
-}
 
 pub struct ServerAssets {
-	clients []Clients
+	pub mut:
+		clients []net.TcpConn
 }
 
 pub fn cmd_handler(mut socket net.TcpConn) {
@@ -19,7 +15,16 @@ pub fn cmd_handler(mut socket net.TcpConn) {
 	// socket.write_string()
 	socket.wait_for_read() or { panic("[x] Failed") }
 	data := socket.read_line().replace("\r\n", "")
-	if data.len != 0 {
+	mut empty_c := 0
+	if data.len == 0 {
+		empty_c += 1
+		if empty_c == 10 {
+			println('User disconnected ${socket.peer_addr()}')
+			socket.close() or {
+				panic("[x] Error")
+			}
+		}
+	} else {
 		mut c := config.Config{}
 		mut b := banner_sys.Banner{}
 		if data.contains(" ") {
@@ -33,7 +38,7 @@ pub fn cmd_handler(mut socket net.TcpConn) {
 		} else if data == "geo" {
 
 		}
-		socket.write_string("\r\x1b[37m╔═[\x1b[35mWocky\x1b[37m@\x1b[35mII\x1b[37m]\r\n╚════➢\x1b[32m ") or { panic("[x]") }
+		socket.write_string("\r\x1b[37m╔═[\x1b[35mWocky\x1b[37m@\x1b[35mII\x1b[37m]\r\n╚════➢\x1b[32m ") or { panic("[x] Error, Failed to send hostname to socket!\r\n") }
 	}
 	println(data)
 }
