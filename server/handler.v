@@ -7,6 +7,7 @@ import config
 
 pub struct ServerAssets {
 	pub mut:
+		cnc_port string
 		clients []net.TcpConn
 }
 
