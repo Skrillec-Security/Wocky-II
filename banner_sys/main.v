@@ -1,6 +1,7 @@
 module banner_sys
 
 import os
+import config
 
 pub struct Banner {
 	pub mut:
@@ -29,23 +30,29 @@ pub fn (mut a Banner) read_file() string {
 }
 
 pub fn (mut a Banner) color_banner() string {
-	mut g := ''
-	g = (a.current_banner).replace("{RED}", "")
-	g = (a.current_banner).replace("{PURPLE}", "")
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
-	// g = (a.current_banner).replace()
+	mut g := a.read_file()
+	g = g.replace("{RED}", config.Red)
+	g = g.replace("{YELLOW}", config.Yellow)
+	g = g.replace("{BLUE}", config.Blue)
+	g = g.replace("{PURPLE}", config.Purple)
+	g = g.replace("{GREEN}", config.Green)
+	g = g.replace("{BLACK}", config.Black)
+	g = g.replace("{GREY}", config.Grey)
+	g = g.replace("{CYAN}", config.Cyan)
+	g = g.replace("{WHITE}", config.White)
+	g = g.replace("{RESET}", config.Reset)
+	g = g.replace("{BG_BLACK}", config.Background_Black)
+	g = g.replace("{BG_RED}", config.Background_Red)
+	g = g.replace("{BG_GREEN}", config.Background_Green)
+	g = g.replace("{BG_YELLOW}", config.Background_Yellow)
+	g = g.replace("{BG_BLUE}", config.Background_Blue)
+	g = g.replace("{BG_PURPLE}", config.Background_Purple)
+	g = g.replace("{BG_CYAN}", config.Background_Cyan)
+	g = g.replace("{BG_LIGHTGREY}", config.Background_LightGrey)
+	g = g.replace("{BG_DARKGREY}", config.Background_DarkGrey)
+	g = g.replace("{BG_LIGHTRED}", config.Background_LightRed)
+	g = g.replace("{BG_LIGHTGREEN}", config.Background_LightGreen)
+	g = g.replace("{BG_LIGHTYELLOW}", config.Background_LightYellow)
+	g = g.replace("{BG_RESET}", config.Background_Reset)
 	return g
 }
