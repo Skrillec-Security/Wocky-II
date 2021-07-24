@@ -1,9 +1,9 @@
 int check(void)
 {
   #ifdef __unix__
-    printf("Gay!\n");    
+    printf("[+] Linux System!\r\n");    
   #elif defined(_WIN32) || defined(WIN32)
-    printf("Extra Gay!\n");
+    printf("This system is not on linux!\r\n");
     exit(0)
   #endif
 }
