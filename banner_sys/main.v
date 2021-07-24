@@ -31,6 +31,7 @@ pub fn (mut a Banner) read_file() string {
 
 pub fn (mut a Banner) color_banner() string {
 	mut g := a.read_file()
+	g = g.replace("\n", "\r\n")
 	g = g.replace("{RED}", config.Red)
 	g = g.replace("{YELLOW}", config.Yellow)
 	g = g.replace("{BLUE}", config.Blue)
