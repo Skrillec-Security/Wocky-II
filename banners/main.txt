@@ -1,0 +1,17 @@
+                                      {YELLOW}╦╦
+                                      ║║
+                                ╦ ╦╔═╗╔═╗╦╔═╦ ╦
+                                ║║║║ ║║  ╠╩╗╚╦╝
+                                ╚╩╝╚═╝╚═╝╩ ╩ ╩
+                                      ║║
+                                      ╩╩{WHITE} 
+                    ╚═══╦══╦═════════╦═══╦════════╦══╦═══╝
+     ╔══════════════════╝  ║         ║   ║        ║  ╚══════════════════╗
+     ║ {YELLOW}Version: 2.0{WHITE}   ╔════╝         ║   ║        ╚════╗   {YELLOW}IntenseSec{WHITE}   ║
+     ║ {YELLOW}Coded In: V{WHITE}    ║              ║   ║             ║ {YELLOW}IG: @Wocky.v{WHITE}   ║
+     ║ {YELLOW}Creator: vZy{WHITE}   ║              ║   ║             ║ {YELLOW}Github: vZy666{WHITE} ║
+     ╚════════════════╝              ║   ║             ╚════════════════╝
+     ╔═══════════════════════════════╝   ╚══════════════════════════════╗
+     ║ {YELLOW}Welcome to Wocky Botnet | Type '?' or 'help' for a list of cmds{WHITE}  ║
+     ║           {YELLOW}Add-on purchases are available in our discord{WHITE}          ║
+     ╚══════════════════════════════════════════════════════════════════╝{RESET}
