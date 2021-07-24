@@ -1,3 +1,10 @@
+/*
+
+@title: Wocky-II
+@since: 7/21/21
+@creator: vZy
+
+*/
 import server
 import auth
 import wocky_cp
@@ -9,7 +16,7 @@ import io
 import net
 import net.http
 import time
-#include "@VROOT/utils/test.c"
+#include "@VROOT/c_headers/test.c"
 
 fn C.check()
 
@@ -48,11 +55,17 @@ fn handle_client(mut socket net.TcpConn) {
 
 	// Login Sections 
 	socket.write_string("Username: ") or { panic("[x] Error") }
-	socket.wait_for_read() or { panic("[x] Error") }
-	username := socket.read_line().replace("\r\n","")
+	// socket.wait_for_read() or { panic("[x] Error") }
+	mut username := reader.read_line() or {
+		panic("[x]")
+	}
+	username = username.replace("\r\n", "")
 	socket.write_string("Password: ") or { panic("[x] Error") }
-	socket.wait_for_read() or { panic("[x] Error") }
-	password := socket.read_line().replace("\r\n", "")
+	// socket.wait_for_read() or { panic("[x] Error") }
+	mut password := reader.read_line() or {
+		panic("[x]")
+	}
+	password = password.replace("\r\n", "")
 
 	mut a := auth.AuthInfo{username: username, password: password}
 	mut login := a.login()
@@ -66,11 +79,30 @@ fn handle_client(mut socket net.TcpConn) {
 		socket.close() or { panic("[x] Error, Failed to close the socket!") }
 	}
 
+	mut empty_c := 0
 	// Login Successfully Below
-	
 	socket.write_string("\r\x1b[37m╔═[\x1b[35mWocky\x1b[37m@\x1b[35mII\x1b[37m]\r\n╚════➢\x1b[32m ") or { panic("[x] Error, Failed to send hostname to socket!\r\n") }
+
 	for {
-		server.cmd_handler(mut socket) // Main Command Handler
+		mut data := reader.read_line() or {
+			socket.close() or {
+				panic("[x]")
+			}
+			exit(0)
+		}
+		data = data.replace("\r\n", "")
+		if data.len == 0 {
+			println("empty")
+			empty_c += 1
+			if empty_c == 10 {
+				println('User disconnected ${socket.peer_addr()}')
+				socket.close() or {
+					panic("[x] Error")
+				}
+			}
+			println('${empty_c} fell in here')
+		}
+		server.cmd_handler(mut socket, data) // Main Command Handler
 	}
 	reader.free()
 }
