@@ -56,15 +56,11 @@ fn handle_client(mut socket net.TcpConn) {
 	// Login Sections 
 	socket.write_string("Username: ") or { panic("[x] Error") }
 	// socket.wait_for_read() or { panic("[x] Error") }
-	mut username := reader.read_line() or {
-		panic("[x]")
-	}
+	mut username := reader.read_line()
 	username = username.replace("\r\n", "")
 	socket.write_string("Password: ") or { panic("[x] Error") }
 	// socket.wait_for_read() or { panic("[x] Error") }
-	mut password := reader.read_line() or {
-		panic("[x]")
-	}
+	mut password := reader.read_line()
 	password = password.replace("\r\n", "")
 
 	mut a := auth.AuthInfo{username: username, password: password}
@@ -78,31 +74,30 @@ fn handle_client(mut socket net.TcpConn) {
 		socket.write_string(login) or { panic("[x] Error, Failed to send login failure message to socket") }
 		socket.close() or { panic("[x] Error, Failed to close the socket!") }
 	}
-
+	mut b := banner_sys.Banner{file: "main"}
+	socket.write_string(config.Clear + b.color_banner()) or { panic("[x] Error, Unable to send main banner!\r\n") }
 	mut empty_c := 0
 	// Login Successfully Below
-	socket.write_string("\r\x1b[37m╔═[\x1b[35mWocky\x1b[37m@\x1b[35mII\x1b[37m]\r\n╚════➢\x1b[32m ") or { panic("[x] Error, Failed to send hostname to socket!\r\n") }
+	socket.write_string(config.Hostname) or { panic("[x] Error, Failed to send hostname to socket!\r\n") }
 
 	for {
-		mut data := reader.read_line() or {
-			socket.close() or {
-				panic("[x]")
-			}
-			exit(0)
-		}
+		mut data := reader.read_line()
 		data = data.replace("\r\n", "")
 		if data.len == 0 {
 			println("empty")
 			empty_c += 1
-			if empty_c == 10 {
+			if empty_c > 10 {
 				println('User disconnected ${socket.peer_addr()}')
-				socket.close() or {
-					panic("[x] Error")
-				}
+				socket.close() or { lol() }
+				break
 			}
 			println('${empty_c} fell in here')
 		}
 		server.cmd_handler(mut socket, data) // Main Command Handler
 	}
 	reader.free()
+}
+
+fn lol() {
+
 }
