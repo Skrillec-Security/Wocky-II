@@ -168,3 +168,12 @@ pub fn (mut a RegisterCrud) token_remove() string {
 	}
 	return "[+] Token: $a.token successfully removed!\r\n"
 }
+
+pub fn (mut a RegisterCrud) create_token() string {
+	mut new_token := os.execute("tr -dc A-Za-z0-9 </dev/urandom | head -c 34 ; echo ''").output
+	mut fd := open("/root/Wocky/db/tokens.db") or {
+		panic("[x] Error, Unable to read TOKENS database!\r\n")
+	}
+
+	
+}
