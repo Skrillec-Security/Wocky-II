@@ -39,6 +39,7 @@ pub struct Crud {
 		mtime int
 		conn int
 		ongoing int
+		admin int
 		expiry string
 }
 
@@ -62,6 +63,15 @@ pub fn (mut a Crud) userline() string {
 	for user in users {
 		if user.len > 5 {
 			if user.contains("('$a.user','") {
+				mut i := (((user.replace("('","")).replace("')", "")).replace("','", ",")).split(",")
+				a.ip = i[1]
+				a.pw = i[2]
+				a.lvl = i[3].int()
+				a.mtime = i[4].int()
+				a.conn = i[5].int()
+				a.ongoing = i[6].int()
+				a.admin = i[7].int()
+				a.expiry = i[8]
 				return (((user.replace("('","")).replace("')", "")).replace("','", ",")).replace(" ", "")
 			}
 		}
@@ -169,11 +179,11 @@ pub fn (mut a RegisterCrud) token_remove() string {
 	return "[+] Token: $a.token successfully removed!\r\n"
 }
 
-pub fn (mut a RegisterCrud) create_token() string {
-	mut new_token := os.execute("tr -dc A-Za-z0-9 </dev/urandom | head -c 34 ; echo ''").output
-	mut fd := open("/root/Wocky/db/tokens.db") or {
-		panic("[x] Error, Unable to read TOKENS database!\r\n")
-	}
+// pub fn (mut a RegisterCrud) create_token() string {
+// 	mut new_token := os.execute("tr -dc A-Za-z0-9 </dev/urandom | head -c 34 ; echo ''").output
+// 	mut fd := open("/root/Wocky/db/tokens.db") or {
+// 		panic("[x] Error, Unable to read TOKENS database!\r\n")
+// 	}
 
 	
-}
+// }
