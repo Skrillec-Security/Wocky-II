@@ -54,6 +54,7 @@ fn handle_client(mut socket net.TcpConn) {
 	mut reader := io.new_buffered_reader(reader: socket)
 	mut current_ip := socket.peer_addr() or { return } //User's IP
 	println('> new client: $current_ip')
+	socket.set_read_timeout(time.infinite)
 
 	// Login Sections 
 	socket.write_string("Username: ") or { panic("[x] Error") }
