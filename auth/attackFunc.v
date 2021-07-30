@@ -25,9 +25,7 @@ pub fn (mut af AttackFunc) validate_time() bool {
 	mut info_check := c.userline()
 	if info_check.contains("[x]") { return false }
 	mut info := info_check.split(",")
-	if c.mtime > af.time{
-		return true
-	} else if c.mtime == af.time {
+	if af.time <= c.mtime {
 		return true
 	} else {
 		return false
