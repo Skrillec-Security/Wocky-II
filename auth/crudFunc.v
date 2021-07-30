@@ -1,6 +1,6 @@
 module auth
 
-struct CrudFunc {
+pub struct CrudFunc {
 	pub mut:
 		user string
 		ip string
@@ -16,21 +16,17 @@ struct CrudFunc {
 // note -> checks if a user is premium! 
 //         upto 6 ranks! ( this can be changed for more ranks)
 //         the max rank might be live updatable
-pub fn (mut cf CrudFunc) is_premium() int {
+pub fn (mut cf CrudFunc) is_premium() bool {
 	mut s := Crud{user: cf.user}
 	mut usr_info := s.userline()
 	if usr_info.contains("[x]") {
-		return 0
+		return false
 	}
 
-	if s.lvl > 0 {
-		return s.lvl
-	} else if s.lvl < 6 {
-		return s.lvl
-	} else if s.lvl == 6 {
-		return s.lvl
+	if s.lvl in [1,2,3,4,5,6] {
+		return true
 	} else {
-		return 0
+		return false
 	}
 }
 
@@ -52,5 +48,3 @@ pub fn (mut cf CrudFunc) is_admin() int {
 		return 0
 	}
 }
-
-// pub fn (mut cf CrudFunc) is_
