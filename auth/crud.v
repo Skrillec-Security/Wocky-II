@@ -125,7 +125,7 @@ pub fn (mut a Crud) user_update(usr string, mtime string, conn string, admin str
 }
 
 pub fn (mut a Crud) add_user() string {
-	mut check_user := a_info.userline()
+	mut check_user := a.userline()
 	if check_user.contains("[x]") { return "[x] Error, User is already taken. Choose another username!\r\n" }
 	mut ffd := os.open("/root/Wocky/db/users.db") or {
 		panic("[x] Error, Couldn't read USER database!")
