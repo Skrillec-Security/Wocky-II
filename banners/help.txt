@@ -23,4 +23,4 @@
    ║ {YELLOW}logins{WHITE}      ║ {YELLOW}All login logs{WHITE}  ║ {YELLOW}logins{WHITE}                                 ║
    ║ {YELLOW}admin{WHITE}       ║ {YELLOW}Admin cmd list{WHITE}  ║ {YELLOW}admin{WHITE}                                  ║
    ╚═════════════╩═════════════════╩════════════════════════════════════════╝
-   
+   Please note that note all these commands are added yet but there coming!
