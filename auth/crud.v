@@ -124,9 +124,18 @@ pub fn (mut a Crud) user_update(usr string, mtime string, conn string, admin str
 	return "[x] User: $usr successfully updated!\r\n"
 }
 
-pub fn (mut a Crud) user_ipreset(user string, ip string) string {
-	// Finish later
-	return "[x] Gang"
+pub fn (mut a Crud) add_user() string {
+	mut check_user := a_info.userline()
+	if check_user.contains("[x]") { return "[x] Error, User is already taken. Choose another username!\r\n" }
+	mut ffd := os.open("/root/Wocky/db/users.db") or {
+		panic("[x] Error, Couldn't read USER database!")
+	}
+
+	ffd.write("('$a.user','none','$a.pw','0','0','0','0','0','0/0/0000')\n".bytes()) or {
+		panic("[x] Error, Couldn't write USER data to database!")
+	}
+	ffd.close()
+	return "[+] User: $a.user has been added!\r\n"
 }
 
 // ===============================REGISTER SHIT=================================================
