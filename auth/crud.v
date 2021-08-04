@@ -111,7 +111,7 @@ arguments -> usr string, mtime string, conn string, admin string
 */
 pub fn (mut a Crud) user_update(usr string, mtime string, conn string, admin string) string {
 	// edit this function later to use struct strings instead of function argument strings
-	mut file_d := os.open('/root/Wocky/db/users.db') or {
+	mut file_d := os.open_append('/root/Wocky/db/users.db') or {
 		panic("[x] Error, Couldn't read USER database!")
 	}
 	a.user = usr
@@ -126,16 +126,20 @@ pub fn (mut a Crud) user_update(usr string, mtime string, conn string, admin str
 
 pub fn (mut a Crud) add_user() string {
 	mut check_user := a.userline()
-	if check_user.contains("[x]") { return "[x] Error, User is already taken. Choose another username!\r\n" }
-	mut ffd := os.open("/root/Wocky/db/users.db") or {
-		panic("[x] Error, Couldn't read USER database!")
-	}
+	if check_user.contains("[x]") { 
+		mut ffd := os.open_append("/root/Wocky/db/users.db") or {
+			panic("[x] Error, Couldn't read USER database!")
+		}
 
-	ffd.write("('$a.user','none','$a.pw','0','0','0','0','0','0/0/0000')\n".bytes()) or {
-		panic("[x] Error, Couldn't write USER data to database!")
+		ffd.writeln("('${a.user}','none','${a.pw}','${a.lvl}','${a.mtime}','${a.conn}','0','${a.admin}','${a.expiry}')") or {
+			println("[x] Failed to write to 'users.db' DB! ${err.msg}")
+			return "[x] Error, Unable to read users DB!\r\n"
+		}
+		ffd.close()
+		return "[+] User: ${a.user} has been added!\r\n"
+	} else {
+		return "[x] Error, User is already taken. Choose another username!\r\n" 
 	}
-	ffd.close()
-	return "[+] User: $a.user has been added!\r\n"
 }
 
 // ===============================REGISTER SHIT=================================================
@@ -163,7 +167,7 @@ pub fn (mut a RegisterCrud) user_register(usr string, pw string, token string) s
 }
 
 pub fn (mut a RegisterCrud) tokenline() string {
-	mut tokens := os.read_lines('/root/Wocky/db/tokens.db') or {
+	mut tokens := os.read_lines('db/tokens.db') or {
 		panic("[x] Error, Couldn't read TOKEN database!\r\n")
 	}
 
@@ -178,7 +182,7 @@ pub fn (mut a RegisterCrud) tokenline() string {
 }
 
 pub fn (mut a RegisterCrud) token_remove() string {
-	mut tokens := os.read_lines('/root/Wocky/db/users.db') or {
+	mut tokens := os.read_lines('/root/Wocky/db/tokens.db') or {
 		panic("[x] Error, Couldn't read TOKEN database!]r]n")
 	}
 
@@ -190,7 +194,7 @@ pub fn (mut a RegisterCrud) token_remove() string {
 
 // pub fn (mut a RegisterCrud) create_token() string {
 // 	mut new_token := os.execute("tr -dc A-Za-z0-9 </dev/urandom | head -c 34 ; echo ''").output
-// 	mut fd := open("/root/Wocky/db/tokens.db") or {
+// 	mut fd := open("db/tokens.db") or {
 // 		panic("[x] Error, Unable to read TOKENS database!\r\n")
 // 	}
 
