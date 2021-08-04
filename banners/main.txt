@@ -1,10 +1,10 @@
-                                      {YELLOW}╦╦
+                                  {YELLOW}    {YELLOW}╦╦
                                       ║║
                                 ╦ ╦╔═╗╔═╗╦╔═╦ ╦
-                                ║║║║ ║║  ╠╩╗╚╦╝
-                                ╚╩╝╚═╝╚═╝╩ ╩ ╩
-                                      ║║
-                                      ╩╩{WHITE} 
+     {WHITE}╔══════════════╗           {YELLOW}║║║║ ║║  ╠╩╗╚╦╝          {WHITE}╔══════════════╗
+     ║ {YELLOW}wocky.pw/dsc {WHITE}║           {YELLOW}╚╩╝╚═╝╚═╝╩ ╩ ╩           {WHITE}║ {YELLOW}wocky.pw/uix {WHITE}║
+     ╚══════════════╣                 {YELLOW}║║{WHITE}                 ╠══════════════╝
+                    ║                 {YELLOW}╩╩{WHITE}                 ║
                     ╚═══╦══╦════════╦════╦════════╦══╦═══╝
      ╔══════════════════╝  ║        ║    ║        ║  ╚══════════════════╗
      ║ {YELLOW}Version: 2.0{WHITE}   ╔════╝        ║    ║        ╚════╗   {YELLOW}IntenseSec{WHITE}   ║
