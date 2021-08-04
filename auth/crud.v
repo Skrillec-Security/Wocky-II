@@ -80,6 +80,33 @@ pub fn (mut a Crud) userline() string {
 	return "[x] Error, Unable to find user!"
 }
 
+pub fn (mut a Crud) change_pw() string {
+	mut users := os.read_line("/root/Wocky/db/users.db") or {
+		panic("[x] Error, Couldn't read USER database!\r\n")
+	}
+	mut new_db := ''
+	for user in users {
+		if user.len > 5 {
+			if user.contains("('${a.user}','") {
+				mut i := (((user.replace("('","")).replace("')", "")).replace("','", ",")).split(",")
+				a.ip = i[1]
+				a.pw = i[2]
+				a.lvl = i[3].int()
+				a.mtime = i[4].int()
+				a.conn = i[5].int()
+				a.ongoing = i[6].int()
+				a.admin = i[7].int()
+				a.expiry = i[8]
+				new_db += "('${a.user}','${a.ip}','${a.pw}','${a.lvl}','${a.mtime}','${a.conn}','${a.ongoing}','${a.admin}','${a.expiry}')\n"
+			} else {
+				new_db += user + "\n"
+			}
+		}
+	}
+	os.write_file("/root/Wocky/db/users.db") or { 0 }
+	return "User: ${a.user} successfully updated!\r\n"
+}
+
 /*
 method -> user_remove()
 note -> remove user from database!
