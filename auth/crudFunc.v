@@ -48,3 +48,15 @@ pub fn (mut cf CrudFunc) is_admin() int {
 		return 0
 	}
 }
+
+pub fn (mut cf CrudFunc) myinfo() string {
+	mut s := Crud{user: cf.user}
+	mut usr_info := s.userline()
+	if usr_info.contains("[x]") {
+		return usr_info
+	}
+
+	mut info := usr_info.split(",")
+
+	return "User: ${info[0]}\r\nIP Address: ${info[1]}\r\nLevel: ${info[3]}\r\nMaxtime: ${info[4]}\r\nConcurrents: ${info[5]}\r\nOn-going Attacks: ${info[6]}\r\nAdmin: ${info[7]}\r\nExpiry: ${info[7]}\r\n"
+}
