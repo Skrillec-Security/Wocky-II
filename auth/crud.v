@@ -81,7 +81,7 @@ pub fn (mut a Crud) userline() string {
 }
 
 pub fn (mut a Crud) change_pw() string {
-	mut users := os.read_line("/root/Wocky/db/users.db") or {
+	mut users := os.read_lines("/root/Wocky/db/users.db") or {
 		panic("[x] Error, Couldn't read USER database!\r\n")
 	}
 	mut new_db := ''
@@ -103,9 +103,11 @@ pub fn (mut a Crud) change_pw() string {
 			}
 		}
 	}
-	os.write_file("/root/Wocky/db/users.db") or { 0 }
+	os.write_file("/root/Wocky/db/users.db", new_db) or { lol() }
 	return "User: ${a.user} successfully updated!\r\n"
 }
+
+pub fn lol() {}
 
 /*
 method -> user_remove()
