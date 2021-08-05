@@ -41,6 +41,8 @@ pub const (
     Hostname = "\r\x1b[37m╔═[\x1b[33mWocky\x1b[37m@\x1b[33mII\x1b[37m]\r\n╚════➢\x1b[32m "
 )
 
+// mut current_users := ['', '']
+
 pub fn (mut c Config) set_config_info(cmd string, fullcmd string, arg []string, arg_c int) {
 	c.cmd = cmd
 	c.fullcmd = fullcmd
