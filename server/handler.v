@@ -118,8 +118,15 @@ pub fn admin_handler(mut socket net.TcpConn, data string, username string) {
 	mut cmd := arg[0]
 	mut admin_cmd := arg[1]
 
-	if admin_cmd == "add" {
-		mut p := auth.Crud{user: arg[2], pw: arg[3], lvl: arg[4].int(), mtime: arg[5].int(), conn: arg[6].int(), admin: arg[7].int(), expiry: arg[8]}
-		socket.write_string(p.add_user()) or { 0 }
+	match admin_cmd {
+		"userlist" {
+			commands.admin_userlist_cmd(mut socket, data, username)
+		}
+		"add" {
+			mut p := auth.Crud{user: arg[2], pw: arg[3], lvl: arg[4].int(), mtime: arg[5].int(), conn: arg[6].int(), admin: arg[7].int(), expiry: arg[8]}
+			socket.write_string(p.add_user()) or { 0 }
+		} else { 
+			socket.write_string("[x] Error, No admin command found!\r\n") or { 0 }
+		}
 	}
 }
