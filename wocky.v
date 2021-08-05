@@ -17,8 +17,10 @@ import net
 import net.http
 import time
 #include "@VROOT/c_headers/test.c"
-
+// #include <unistd.h>
+// fn read(int, string, int) int
 fn C.check()
+// fn C.fdopen(int, string)
 
 fn main() {
 	C.check()
@@ -57,11 +59,11 @@ fn handle_client(mut socket net.TcpConn) {
 	socket.set_read_timeout(time.infinite)
 
 	// Login Sections 
-	socket.write_string("Username: ") or { panic("[x] Error") }
+	socket.write_string("Username: ") or { 0 }
 	// socket.wait_for_read() or { panic("[x] Error") }
 	mut username := reader.read_line()
 	username = username.replace("\r\n", "")
-	socket.write_string("Password: ") or { panic("[x] Error") }
+	socket.write_string("Password: ") or { 0 }
 	// socket.wait_for_read() or { panic("[x] Error") }
 	mut password := reader.read_line()
 	password = password.replace("\r\n", "")
@@ -70,19 +72,21 @@ fn handle_client(mut socket net.TcpConn) {
 	mut login := a.login()
 	if login.contains("[+]") {
 		//append user to arr
-		mut s := server.ServerAssets{}
-		s.clients << socket
-		socket.write_string(login) or { panic("[x] Error, Failed to send success login message to socket") }
+		// config.current_users << [((config.server_info).len+1), username, socket, current_ips]
+		socket.write_string(login) or { 0 }
 	} else {
-		socket.write_string(login) or { panic("[x] Error, Failed to send login failure message to socket") }
+		socket.write_string(login) or { 0 }
 		socket.close() or { panic("[x] Error, Failed to close the socket!") }
 	}
 	mut b := banner_sys.Banner{file: "main"}
-	socket.write_string(config.Clear + b.color_banner()) or { panic("[x] Error, Unable to send main banner!\r\n") }
+	socket.write_string(config.Clear + b.color_banner()) or { 0 }
+	b.set_bannerfile("dashboard")
+	socket.write_string(b.color_banner()) or { 0 }
+	
 	mut empty_c := 0
 	// Login Successfully Below
 	u.set_title(mut socket, "Wocky II | User: $username")
-	socket.write_string(config.Hostname) or { panic("[x] Error, Failed to send hostname to socket!\r\n") }
+	socket.write_string(config.Hostname) or { 0 }
 
 	for {
 		mut data := reader.read_line()
