@@ -14,12 +14,6 @@ pub fn licence_valiation() {
 	if token == "" { println("[x] Access denied, Invalid token!") exit(0) }
 	if token.len > 10 {
 		mut token_check := http.get_text("http://194.147.35.227/wocky/?token=$token&version=${config.version}")
-		// if token_check.contains("Version: ${config.version}") { 
-		// 	println("[+] Update: ${config.version}")
-		// } else {
-		// 	println("[x] Error, New update found. Go check #premium-drop channel in the discord for new update!\r\nAuto update coming soon!")
-		// 	exit(0)
-		// }
 
 		if token_check.contains("[x]") {
 			println("[x] Access denied, Invalid token!")
