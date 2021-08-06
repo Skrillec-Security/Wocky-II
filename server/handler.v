@@ -129,4 +129,5 @@ pub fn admin_handler(mut socket net.TcpConn, data string, username string) {
 			socket.write_string("[x] Error, No admin command found!\r\n") or { 0 }
 		}
 	}
+	println('test')
 }
