@@ -52,7 +52,7 @@ fn listener(port string) {
 fn handle_client(mut socket net.TcpConn) {
 	mut u := utils.CLI{}
 	u.set_title(mut socket, "Wocky II | Login")
-	u.resize_terminal(mut socket, 40, 80)
+	u.resize_terminal(mut socket, 40, 85)
 	mut reader := io.new_buffered_reader(reader: socket)
 	mut current_ip := socket.peer_addr() or { return } //User's IP
 	println('> new client: $current_ip')
