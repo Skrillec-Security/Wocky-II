@@ -45,7 +45,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 				b.set_bannerfile('main')
 				mut main_banner := b.color_banner()
 				b.set_bannerfile('dashboard')
-				socket.write_string(config.Clear + "${main_banner} ${b.color_banner()}") or { 0 }
+				socket.write_string(config.Clear + main_banner + b.color_banner()) or { 0 }
 			}
 			"help" {	
 				b.set_bannerfile('help')
