@@ -7,7 +7,8 @@
 #include <arpa/inet.h>
 #include <errno.h>
 
-#define MY_PORT		331
+
+#define MY_PORT		332
 #define MAX_BUF		1024
 
 //since like 2013
@@ -65,19 +66,19 @@ int main()
         //     printf("working %s\r\n", buffer);
         // }
 		int skid;
-		while(skid = recv(clientfd, buffer, sizeof(buffer), EAGAIN) /*read(clientfd, buffer, 1)*/) {
+		while(skid = recv(clientfd, buffer, sizeof(buffer), MSG_WAITALL) /*read(clientfd, buffer, 1)*/) {
 			// i need a replace function to remove \r\n. 
 			// read(clientfd, buffer, 1);
+			printf("Full buffer: %s\r\n\r\n", buffer);
 			if(strlen(buffer) > 6) {
 				printf("Full buffer: %s\r\n\r\n", buffer);
-				for(int i = 0; i <= strlen(buffer); i++) {
-					if(buffer[i] == "\r" || buffer[i] == "\n") {
-						memset(buffer, 0, sizeof(buffer));
-					}
-				}
 				if(strlen(buffer) > 15) {
 					memset(buffer, 0, sizeof(buffer));
 				}
+			}
+			
+			if(strlen(buffer) > 5)  {
+				memset(buffer, 0, sizeof(buffer));
 			}
 			
 			printf("Current Buffer: %s\r\n", buffer); 
