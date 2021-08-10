@@ -14,6 +14,8 @@ user_remove()      | string       | user
 user_update()      | string       | user, mtime, conn, admin, expiry
 user_ipreset()     | string       | user
 
+// i have to add new functions here, this project got unorganized due to grinding it 
+
 ==============================================================================================
 
 Struct: RegisterCrud
