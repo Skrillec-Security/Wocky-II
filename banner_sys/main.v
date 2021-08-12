@@ -1,7 +1,10 @@
 module banner_sys
 
 import os
+import net
 import config
+import wocky_utils
+import wocky_uix
 
 pub struct Banner {
 	pub mut:
@@ -56,4 +59,35 @@ pub fn (mut a Banner) color_banner() string {
 	g = g.replace("{BG_LIGHTYELLOW}", config.Background_LightYellow)
 	g = g.replace("{BG_RESET}", config.Background_Reset)
 	return g
+}
+
+pub fn (mut b Banner) start_output(mut socket net.TcpConn) {
+	// Declarations
+	mut str_utils := wocky_utils.Custom_utils{}
+	mut uix := wocky_uix.UIX_Func{}
+	mut main_ui := ""
+	lines := b.color_banner().split("\n")
+	for line in lines {
+		if line.contains("place_text") {
+		} else {
+			main_ui += "${line}\r\n"
+		}
+	}
+
+	socket.write_string(main_ui.replace("╝\n", "╝")) or { 0 }
+}
+
+pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
+	// Declarations
+	mut str_utils := wocky_utils.Custom_utils{}
+	mut uix := wocky_uix.UIX_Func{}
+	mut lines := b.color_banner().split("\n")
+	for line in lines {
+		if line.contains("place_text(") {
+			output := line.split("=")[1]
+			mut r, c := str_utils.get_str_between(line, "(", ")")
+			// uix.sock_place_text(mut socket, r, c, output)
+			uix.sock_place_text(mut socket, r.int(), c.int(), output.replace("\r\n", ""))
+		}
+	}
 }
