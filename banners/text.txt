@@ -1,0 +1,4 @@
+place_text(18,30)={WHITE}╔═[{YELLOW}Wocky{WHITE}@{YELLOW}II{WHITE}]
+place_text(19,30)=╚════➢{GREEN}
+place_text(2,35)=Add-on packages available! | Discord: wocky.pw/dsc
+place_text(5,40)=J1HD is a skid
