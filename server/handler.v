@@ -2,6 +2,7 @@ module server
 
 import net
 import banner_sys
+import wocky_uix
 import config 
 import auth
 
@@ -28,31 +29,39 @@ pub struct Test{
 }
 
 pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
-	// println('$socket \r\n\r\n ${socket.sock}\r\n\r\n')
-	// println(socket.sock)
+	mut b := banner_sys.Banner{file: "ui"}
 	if data.len == 0 {
-		socket.write_string(config.Hostname) or { 0 }
+		socket.write_string(config.Clear) or { 0 }
+		b.start_output(mut socket)
+		b.set_bannerfile("text")
+		b.read_banner_text(mut socket)
 	} else {
 		if data == "" { return }
+		/*
+		Struct Declaring
+		*/
 		mut c := config.Config{}
-		mut b := banner_sys.Banner{}
+		mut wuix := wocky_uix.UIX_Func{}
+
+		// Command Parsing
 		if data.contains(" ") {
 			c.set_config_info((data.split(" ")[0]), data, (data.split(" ")), ((data.split(" ")).len))
 		} else { c.set_config_info(data, data, [data], data.len) }
 		
+		// Command Handling
 		match c.cmd {
-			"home" {	
-				b.set_bannerfile('main')
-				mut main_banner := b.color_banner()
-				b.set_bannerfile('dashboard')
-				socket.write_string(config.Clear + main_banner + b.color_banner()) or { 0 }
+			"home" {
+				socket.write_string(config.Clear) or { 0 }
+				b.start_output(mut socket)
+				b.set_bannerfile("text")
+				b.read_banner_text(mut socket)
 			}
 			"help" {	
-				b.set_bannerfile('help')
+				// b.set_bannerfile('help')
 				socket.write_string(b.color_banner()) or { 0 }
 			}
 			"clear" {
-				b.set_bannerfile('main')
+				// b.set_bannerfile('main')
 				socket.write_string(config.Clear + b.color_banner()) or { 0 }
 			} 
 			"whoami" {
@@ -82,33 +91,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 			}
 		}
 
-		// if data == "home" {
-		// 	b.set_bannerfile('main')
-		// 	mut main_banner := b.color_banner()
-		// 	b.set_bannerfile('dashboard')
-		// 	socket.write_string("${main_banner} ${b.color_banner()}") or { 0 }
-		// } else if data == "help" {
-		// 	b.set_bannerfile('help')
-		// 	socket.write_string(b.color_banner()) or { 0 }
-		// } else if data == "clear" {
-		// 	b.set_bannerfile('main')
-		// 	socket.write_string(config.Clear + b.color_banner()) or { 0 }
-		// } else if c.cmd == "whoami" {
-		// 	socket.write_string("${username}\r\n") or { 0 }
-		// } else if c.cmd == "info" {
-		// 	mut cf := auth.CrudFunc{user: username}
-		// 	socket.write_string(cf.myinfo()) or { 0 }
-		// } else if c.cmd == "methods" {
-		// 	b.set_bannerfile("methods")
-		// 	socket.write_string(b.color_banner()) or { 0 }
-		// } else if data == "geo" {
-		// 	commands.geo_cmd(mut socket, c.arg[1])
-		// } else if c.cmd == "stress" {
-		// 	commands.attack_cmd(mut socket, data.split(" "),  username)
-		// } else if c.cmd == "admin" {
-		// 	admin_handler(mut socket, data, username)
-		// }
-		socket.write_str(config.Hostname) or { 0 }
+		wuix.sock_move_cursor(mut socket, 19, 37)
 		println(data) // send this to the new logger when finished
 	}
 }
