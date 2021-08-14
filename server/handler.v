@@ -30,6 +30,7 @@ pub struct Test{
 
 pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 	mut b := banner_sys.Banner{file: "ui"}
+	mut wuix := wocky_uix.UIX_Func{}
 	if data.len == 0 {
 		socket.write_string(config.Clear) or { 0 }
 		b.start_banner_output(mut socket)
@@ -42,7 +43,6 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 		Struct Declaring
 		*/
 		mut c := config.Config{}
-		mut wuix := wocky_uix.UIX_Func{}
 
 		// Command Parsing
 		if data.contains(" ") {
