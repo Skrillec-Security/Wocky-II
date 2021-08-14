@@ -32,9 +32,10 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 	mut b := banner_sys.Banner{file: "ui"}
 	if data.len == 0 {
 		socket.write_string(config.Clear) or { 0 }
-		b.start_output(mut socket)
+		b.start_banner_output(mut socket)
 		b.set_bannerfile("text")
 		b.read_banner_text(mut socket)
+		wuix.sock_move_cursor(mut socket, 17, 37)
 	} else {
 		if data == "" { return }
 		/*
@@ -52,7 +53,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 		match c.cmd {
 			"home" {
 				socket.write_string(config.Clear) or { 0 }
-				b.start_output(mut socket)
+				b.start_banner_output(mut socket)
 				b.set_bannerfile("text")
 				b.read_banner_text(mut socket)
 			}
@@ -91,7 +92,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 			}
 		}
 
-		wuix.sock_move_cursor(mut socket, 19, 37)
+		wuix.sock_move_cursor(mut socket, 17, 37)
 		println(data) // send this to the new logger when finished
 	}
 }
