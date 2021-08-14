@@ -61,7 +61,7 @@ pub fn (mut a Banner) color_banner() string {
 	return g
 }
 
-pub fn (mut b Banner) start_output(mut socket net.TcpConn) {
+pub fn (mut b Banner) start_banner_output(mut socket net.TcpConn) {
 	// Declarations
 	mut str_utils := wocky_utils.Custom_utils{}
 	mut uix := wocky_uix.UIX_Func{}
