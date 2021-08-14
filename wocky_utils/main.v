@@ -32,4 +32,21 @@ pub fn (mut c_u Custom_utils) get_str_between(find_str string, start string, end
 	return returning.split(",")[0], returning.split(",")[1]
 }
 
-// pub fn (mut c_u Custom_utils) remove_last_char
+// method -> remove_last_newline(check_str)
+// note -> function created to remove new line at the end of a string .... works for both '\n' and '\r\n'
+pub fn (mut c_u Custom_utils) remove_last_newline(check_str string) string {
+	mut str_count := check_str.len
+	mut second_last := str_count - 1
+	mut fix_str := ''
+	for i in 0..(str_count) {
+		mut c := check_str[i].ascii_str()
+		if i == second_last {
+			if c == "\r" {} else { fix_str += c }
+		} else if i == str_count {
+			if c == "\n" {} else { fix_str += c }
+		} else {
+			fix_str += c
+		}
+	}
+	return fix_str
+}
