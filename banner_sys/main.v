@@ -73,8 +73,7 @@ pub fn (mut b Banner) start_banner_output(mut socket net.TcpConn) {
 			main_ui += "${line}\r\n"
 		}
 	}
-
-	socket.write_string(main_ui.replace("╝\n", "╝")) or { 0 }
+	socket.write_string(str_utils.remove_last_newline(main_ui)) or { 0 }
 }
 
 pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
@@ -87,7 +86,7 @@ pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
 			output := line.split("=")[1]
 			mut r, c := str_utils.get_str_between(line, "(", ")")
 			// uix.sock_place_text(mut socket, r, c, output)
-			uix.sock_place_text(mut socket, r.int(), c.int(), output.replace("\r\n", ""))
+			uix.sock_place_text(mut socket, r.int(), c.int(), str_utils.remove_last_newline(output))
 		}
 	}
 }
