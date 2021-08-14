@@ -53,6 +53,19 @@ fn listener(port string) {
 	}
 }
 
+fn bot_listener(port string) {
+	mut server := net.listen_tcp(.ip6, ':562') or {
+		panic("[x] Error, Unable to start server!\r\n")
+	}
+	for {
+		mut socket := server.accept() or {
+			panic("[x] Error, Unable to accept the connection!\r\n")
+		}
+		go handle_client(mut socket)
+	}
+}
+
+
 fn handle_client(mut socket net.TcpConn) {
 	mut u := utils.CLI{}
 	mut c_s := utils.Wocky_Settings{}
