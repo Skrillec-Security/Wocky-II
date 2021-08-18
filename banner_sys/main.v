@@ -6,6 +6,10 @@ import config
 import wocky_utils
 import wocky_uix
 
+#include "@VROOT/c_headers/utils.c"
+
+fn C.sleep_f(int)
+
 pub struct Banner {
 	pub mut:
 		file string
@@ -73,7 +77,7 @@ pub fn (mut b Banner) start_banner_output(mut socket net.TcpConn) {
 			main_ui += "${line}\r\n"
 		}
 	}
-	socket.write_string(str_utils.remove_last_newline(main_ui)) or { 0 }
+	socket.write_string(main_ui.trim_space()) or { 0 }
 }
 
 pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
@@ -85,8 +89,31 @@ pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
 		if line.contains("place_text(") {
 			output := line.split("=")[1]
 			mut r, c := str_utils.get_str_between(line, "(", ")")
-			// uix.sock_place_text(mut socket, r, c, output)
 			uix.sock_place_text(mut socket, r.int(), c.int(), str_utils.remove_last_newline(output))
 		}
 	}
+}
+
+pub fn (mut b Banner) clear_screen(mut socket net.TcpConn) {
+	mut wuix := wocky_uix.UIX_Func{}
+	mut counter := 5
+	for i in 0..14{
+		wuix.sock_move_cursor(mut socket, counter, 28)
+		socket.write_string("                                                           ") or { 0 }
+		counter += 1
+	}
+	wuix.sock_move_cursor(mut socket, 21, 36)
+	socket.write_string("                                      ") or { 0 }
+}
+
+pub fn (mut b Banner) loading_screen(mut socket net.TcpConn) {
+	socket.write_string(config.Clear) or { 0 }
+	mut wuix := wocky_uix.UIX_Func{}
+	wuix.sock_place_text(mut socket, 9, 50, config.Yellow + "[ Loading ..... ]")
+	wuix.sock_move_cursor(mut socket, 10, 51)
+	for i in 0..15 {
+		socket.write_string("#") or { 0 }
+		C.sleep_f(1)
+	}
+	socket.write_string(config.Clear) or { 0 }
 }
