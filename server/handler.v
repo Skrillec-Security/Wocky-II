@@ -3,6 +3,7 @@ module server
 import net
 import banner_sys
 import wocky_uix
+import wocky_utils
 import config 
 import auth
 
@@ -31,12 +32,13 @@ pub struct Test{
 pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 	mut b := banner_sys.Banner{file: "ui"}
 	mut wuix := wocky_uix.UIX_Func{}
+	b.clear_screen(mut socket)
 	if data.len == 0 {
 		socket.write_string(config.Clear) or { 0 }
 		b.start_banner_output(mut socket)
 		b.set_bannerfile("text")
 		b.read_banner_text(mut socket)
-		wuix.sock_move_cursor(mut socket, 17, 37)
+		wuix.sock_move_cursor(mut socket, 21, 37)
 	} else {
 		if data == "" { return }
 		/*
@@ -57,13 +59,16 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 				b.set_bannerfile("text")
 				b.read_banner_text(mut socket)
 			}
-			"help" {	
-				// b.set_bannerfile('help')
-				socket.write_string(b.color_banner()) or { 0 }
+			"help" {
+				b.set_bannerfile("help")
+				b.read_banner_text(mut socket)
+			}
+			"help2" {
+				b.set_bannerfile("help2")
+				b.read_banner_text(mut socket)
 			}
 			"clear" {
-				// b.set_bannerfile('main')
-				socket.write_string(config.Clear + b.color_banner()) or { 0 }
+				b.clear_screen(mut socket)
 			} 
 			"whoami" {
 				socket.write_string("${username}\r\n") or { 0 }
@@ -88,11 +93,11 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 			"admin" {
 				admin_handler(mut socket, data, username)
 			} else {
-				socket.write_string("[x] Error, No command found") or { 0 }
+				wuix.sock_place_text(mut socket, 5, 29, "[x] Error, No command found")
 			}
 		}
 
-		wuix.sock_move_cursor(mut socket, 17, 37)
+		wuix.sock_move_cursor(mut socket, 21, 37)
 		println(data) // send this to the new logger when finished
 	}
 }
