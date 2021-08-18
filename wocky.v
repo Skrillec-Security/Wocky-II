@@ -18,16 +18,14 @@ import io
 import net
 import net.http
 import time
-#include "@VROOT/c_headers/test.c"
+// #include "@VROOT/c_headers/test.c"
 // #include <unistd.h>
 // fn read(int, string, int) int
 fn C.check()
 // fn C.fdopen(int, string)
 
-struct Current {}
-
 fn main() {
-	C.check()
+	// C.check()
 	time.sleep(5)
 	println(config.Clear)
 	mut port := wocky_cp.port_check(os.args)
@@ -72,7 +70,7 @@ fn handle_client(mut socket net.TcpConn) {
 	mut wuix := wocky_uix.UIX_Func{}
 	mut b := banner_sys.Banner{file: "ui"}
 	u.set_title(mut socket, "${c_s.get_settings()[1]} | Login") // wow just wow. im to high for this LOL
-	u.resize_terminal(mut socket, 20, 87)
+	u.resize_terminal(mut socket, 22, 114)
 	mut reader := io.new_buffered_reader(reader: socket)
 	mut current_ip := socket.peer_addr() or { return } //User's IP
 	println('> new client: $current_ip')
@@ -84,7 +82,7 @@ fn handle_client(mut socket net.TcpConn) {
 	socket.write_string("Username: ") or { 0 }
 	mut username := reader.read_line() or { "" }
 	username = username.replace("\r\n", "")
-	socket.write_string("Password: ") or { 0 }
+	socket.write_string("Password: ${config.Black}") or { 0 }
 	mut password := reader.read_line() or { "" }
 	password = password.replace("\r\n", "")
 	mut a := auth.AuthInfo{username: username, password: password}
@@ -105,11 +103,12 @@ fn handle_client(mut socket net.TcpConn) {
 	
 	mut empty_c := 0
 	u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
+	b.loading_screen(mut socket)
 	socket.write_string(config.Clear) or { 0 }
 	b.start_banner_output(mut socket)
 	b.set_bannerfile("text")
 	b.read_banner_text(mut socket)
-	wuix.sock_move_cursor(mut socket, 17, 37)
+	wuix.sock_move_cursor(mut socket, 21, 37)
 	for {
 		// u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
 		mut data := reader.read_line() or { "" }
