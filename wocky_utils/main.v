@@ -40,10 +40,8 @@ pub fn (mut c_u Custom_utils) remove_last_newline(check_str string) string {
 	mut fix_str := ''
 	for i in 0..(str_count) {
 		mut c := check_str[i].ascii_str()
-		if i == second_last {
-			if c == "\r" {} else { fix_str += c }
-		} else if i == str_count {
-			if c == "\n" {} else { fix_str += c }
+		if i == str_count {
+			if check_str[i] == 13 {} else if c == "n" {} else { fix_str += c }
 		} else {
 			fix_str += c
 		}
