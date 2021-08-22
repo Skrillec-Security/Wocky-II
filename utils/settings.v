@@ -9,5 +9,6 @@ pub fn (mut w_s Wocky_Settings) get_settings() []string {
 	info << settingz[0].replace("terminal_size=", "")
 	info << settingz[1].replace("terminal_title=", "")
 	info << settingz[2].replace("Wocky_MOTD=", "")
+	info << settingz[4].replace("net_port=", "")
 	return info
 }
