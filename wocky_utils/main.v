@@ -48,3 +48,15 @@ pub fn (mut c_u Custom_utils) remove_last_newline(check_str string) string {
 	}
 	return fix_str
 }
+
+pub fn (mut c_u Custom_utils) input_text_at_position(fullstr string, position int, new_str string) string {
+	mut new_str_to_return := ''
+	for i in 0..(fullstr.len) {
+		if i == position {
+			new_str_to_return += new_str
+		} else {
+			new_str_to_return += fullstr[i].ascii_str()
+		}
+	}
+	return new_str_to_return
+}
