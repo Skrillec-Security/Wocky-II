@@ -146,6 +146,8 @@ pub fn (mut b Banner) clear_screen(mut socket net.TcpConn) {
 		socket.write_string("                                                           ") or { 0 }
 		counter += 1
 	}
+	wuix.sock_place_text(mut socket, 4, 27, "╠═══════════════════════════════════════════════════════════╣")
+	wuix.sock_place_text(mut socket, 19, 27, "╠═══════════════════════════════════════════════════════════╣")
 	wuix.sock_move_cursor(mut socket, 21, 36)
 	socket.write_string("                                      ") or { 0 }
 }
