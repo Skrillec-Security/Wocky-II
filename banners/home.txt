@@ -1,0 +1,22 @@
+{WHITE}╔═════════════════════════╦═══════════════════════════════════════════════════════════╦══════════════════════════╗
+║     {YELLOW}╦ ╦╔═╗╔═╗╦╔═╦ ╦{WHITE}     ║ {YELLOW}MOTD:                                                     ║                          ║
+║     {YELLOW}║║║║ ║║  ╠╩╗╚╦╝{WHITE}     ║                                                           ║  {YELLOW}[ Wocky Active Users ]{WHITE}  ║
+║     {YELLOW}╚╩╝╚═╝╚═╝╩ ╩ ╩{WHITE}      ╠════════════════════╦═══════════╦══════════════════════════╣                          ║
+╠═════════════════════════╣ {YELLOW}Network Name{WHITE}       ║  {YELLOW}Status{WHITE}   ║  {YELLOW}Account Information{WHITE}     ║                          ║
+║   {YELLOW}Welcome To Wocky II{WHITE}   ╠════════════════════╬═══════════╬══════════════════════════╣                          ║
+║                         ║ {YELLOW}ToxicStress        {WHITE}║ {GREEN}Online    {WHITE}║ ► {YELLOW}User:                  {WHITE}║                          ║
+║ {YELLOW}Version: 2.1.0{WHITE}          ║ {YELLOW}OrphicSecurityTeam {WHITE}║ {GREEN}Online    {WHITE}║ ► {YELLOW}IP:                    {WHITE}║                          ║
+║ {YELLOW}Coded In: V, C, JS{WHITE}      ║ {YELLOW}AstraSecurityTeam {WHITE} ║ {GREEN}Online    {WHITE}║ ► {YELLOW}Level:                 {WHITE}║                          ║
+║ {YELLOW}Creator: vZy{WHITE}            ║                    ║           ║ ► {YELLOW}Maxtime:               {WHITE}║                          ║
+║ {YELLOW}https://wocky.pw/dsc{WHITE}    ║                    ║           ║ ► {YELLOW}Concurrents:           {WHITE}║                          ║
+║                         ║                    ║           ║ ► {YELLOW}Ongoing:               {WHITE}║                          ║
+║ {YELLOW}Total Users:            {WHITE}║                    ║           ║ ► {YELLOW}Admin:                 {WHITE}║                          ║
+║ {YELLOW}Total Attacks:          {WHITE}║                    ║           ║ ► {YELLOW}Expiry:                {WHITE}║                          ║
+║ {YELLOW}Total APIs:             {WHITE}║                    ║           ║                          ║                          ║
+║                         ║                    ║           ║                          ║                          ║
+║ {YELLOW}Username:               {WHITE}║                    ║           ║                          ║                          ║
+║ {YELLOW}Current Plan:           {WHITE}║                    ║           ║                          ║                          ║
+║ {YELLOW}Max Concurrents:        {WHITE}╠════════════════════╩═══════════╩══════════════════════════╣                          ║
+║ {YELLOW}Max Time:               {WHITE}║                                                           ║                          ║
+║ {YELLOW}Expiry:                 {WHITE}║                                                           ║                          ║
+╚═════════════════════════╩═══════════════════════════════════════════════════════════╩══════════════════════════╝
