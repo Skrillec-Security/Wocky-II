@@ -5,6 +5,8 @@ import net
 import config
 import wocky_utils
 import wocky_uix
+import utils
+import auth
 
 #include "@VROOT/c_headers/utils.c"
 
@@ -12,6 +14,14 @@ fn C.sleep_f(int)
 
 pub struct Banner {
 	pub mut:
+		username string
+		ip string
+		lvl int
+		mtime int
+		conn int
+		ongoing int
+		admin int
+		expiry string
 		file string
 		current_banner string
 }
@@ -36,8 +46,31 @@ pub fn (mut a Banner) read_file() string {
 	return new_str
 }
 
+pub fn (mut a Banner) set_username(username string) {
+	a.username = username
+}
+
 pub fn (mut a Banner) color_banner() string {
 	mut g := a.read_file()
+	g = a.replace_code(g)
+	return g
+}
+
+pub fn (mut b Banner) replace_code(lul string) string {
+	mut g := lul
+	mut ns := utils.Net_Stats{}
+	mut user_info := []string
+	if b.username != "" {
+		mut crud := auth.Crud{user: b.username}
+		user_info = crud.userline().split(",")
+		b.ip = user_info[1]
+		b.lvl = user_info[3].int()
+		b.mtime = user_info[4].int()
+		b.conn = user_info[5].int()
+		b.ongoing = user_info[6].int()
+		b.admin = user_info[7].int()
+		b.expiry = user_info[8]
+	}
 	g = g.replace("\n", "\r\n")
 	g = g.replace("{RED}", config.Red)
 	g = g.replace("{YELLOW}", config.Yellow)
@@ -62,6 +95,17 @@ pub fn (mut a Banner) color_banner() string {
 	g = g.replace("{BG_LIGHTGREEN}", config.Background_LightGreen)
 	g = g.replace("{BG_LIGHTYELLOW}", config.Background_LightYellow)
 	g = g.replace("{BG_RESET}", config.Background_Reset)
+	g = g.replace("{USERNAME}", b.username)
+	g = g.replace("{IP}", b.ip)
+	g = g.replace("{LEVEL}", (b.lvl).str())
+	g = g.replace("{MAXTIME}", (b.mtime).str())
+	g = g.replace("{CONCURRENTS}", (b.conn).str())
+	g = g.replace("{ONGOING}", (b.ongoing).str())
+	g = g.replace("{ADMIN}", (b.admin).str())
+	g = g.replace("{EXPIRY}", b.expiry)
+	g = g.replace("{TOTALUSERS}", ns.total_users().str())
+	g = g.replace("{TOTALATTACKS}", ns.total_attacks().str())
+	g = g.replace("{TOTALAPIS}", ns.total_apis().str())
 	return g
 }
 
@@ -89,7 +133,7 @@ pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
 		if line.contains("place_text(") {
 			output := line.split("=")[1]
 			mut r, c := str_utils.get_str_between(line, "(", ")")
-			uix.sock_place_text(mut socket, r.int(), c.int(), str_utils.remove_last_newline(output))
+			uix.sock_place_text(mut socket, r.int(), c.int(), b.replace_code(output))
 		}
 	}
 }
@@ -109,6 +153,8 @@ pub fn (mut b Banner) clear_screen(mut socket net.TcpConn) {
 pub fn (mut b Banner) loading_screen(mut socket net.TcpConn) {
 	socket.write_string(config.Clear) or { 0 }
 	mut wuix := wocky_uix.UIX_Func{}
+	b.set_bannerfile("logo")
+	socket.write_string(b.color_banner()) or { 0 }
 	wuix.sock_place_text(mut socket, 9, 50, config.Yellow + "[ Loading ..... ]")
 	wuix.sock_move_cursor(mut socket, 10, 51)
 	for i in 0..15 {
