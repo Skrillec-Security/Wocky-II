@@ -11,4 +11,4 @@ place_text(13,29)=GeoIP       ║ geo <ip>
 place_text(14,29)=Port Scan   ║ pscan <ip>
 place_text(15,29)=DNS Resolve ║ dns <URL>
 place_text(16,29)=
-place_text(18,29)=Type 'help2' for page 2! hard for ppl to do
+place_text(18,29)=Type 'help2' for page 2!
