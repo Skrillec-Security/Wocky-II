@@ -1,0 +1,8 @@
+place_text(7,70)={RED}{USERNAME}
+place_text(8,68)={RED}{IP}
+place_text(9,71)={RED}{LEVEL}
+place_text(10,73)={RED}{MAXTIME}
+place_text(11,77)={RED}{CONCURRENTS}
+place_text(12,73)={RED}{ONGOING}
+place_text(13,71)={RED}{ADMIN}
+place_text(14,72)={RED}{EXPIRY}
