@@ -1,22 +1,22 @@
 {WHITE}╔═════════════════════════╦═══════════════════════════════════════════════════════════╦══════════════════════════╗
-║     {YELLOW}╦ ╦╔═╗╔═╗╦╔═╦ ╦{WHITE}     ║ MOTD:                                                     ║                          ║
+║     {YELLOW}╦ ╦╔═╗╔═╗╦╔═╦ ╦{WHITE}     ║ {WHITE}MOTD:                                                     ║                          ║
 ║     {YELLOW}║║║║ ║║  ╠╩╗╚╦╝{WHITE}     ║                                                           ║  [ Wocky Active Users ]  ║
-║     {YELLOW}╚╩╝╚═╝╚═╝╩ ╩ ╩{WHITE}      ║═══════════════════════════════════════════════════════════║                          ║
+║     {YELLOW}╚╩╝╚═╝╚═╝╩ ╩ ╩{WHITE}      ╠═══════════════════════════════════════════════════════════╣                          ║
 ╠═════════════════════════╣                                                           ║                          ║
-║   Welcome To Wocky II   ║                                                           ║                          ║
+║   {YELLOW}Welcome To Wocky II{WHITE}   ║                                                           ║                          ║
 ║                         ║                                                           ║                          ║
-║ Version: 2.1.0          ║                                                           ║                          ║
-║ Coded In: V, C, JS      ║                                                           ║                          ║
-║ Creator: vZy            ║                                                           ║                          ║
-║ https://wocky.pw/dsc    ║                                                           ║                          ║
+║ {YELLOW}Version: 2.1.0          {WHITE}║                                                           ║                          ║
+║ {YELLOW}Coded In: V, C, JS      {WHITE}║                                                           ║                          ║
+║ {YELLOW}Creator: vZy            {WHITE}║                                                           ║                          ║
+║ {YELLOW}https://wocky.pw/dsc    {WHITE}║                                                           ║                          ║
+║                         {WHITE}║                                                           ║                          ║
+║ {YELLOW}Total Users:            {WHITE}║                                                           ║                          ║
+║ {YELLOW}Total Attacks:          {WHITE}║                                                           ║                          ║
+║ {YELLOW}Total APIs:             {WHITE}║                                                           ║                          ║
 ║                         ║                                                           ║                          ║
-║                         ║                                                           ║                          ║
-║                         ║                                                           ║                          ║
-║                         ║                                                           ║                          ║
-║                         ║                                                           ║                          ║
-║ Username: N/A           ║                                                           ║                          ║
-║ Current Plan: N/A       ║                                                           ║                          ║
-║ Max Concurrents: N/A    ╠═══════════════════════════════════════════════════════════╣                          ║
-║ Max Time: N/A           ║                                                           ║                          ║
-║ Expiry: N/A             ║                                                           ║                          ║
+║ {YELLOW}Username:               {WHITE}║                                                           ║                          ║
+║ {YELLOW}Current Plan:           {WHITE}║                                                           ║                          ║
+║ {YELLOW}Max Concurrents:        {WHITE}╠═══════════════════════════════════════════════════════════╣                          ║
+║ {YELLOW}Max Time:               {WHITE}║                                                           ║                          ║
+║ {YELLOW}Expiry:                 {WHITE}║                                                           ║                          ║
 ╚═════════════════════════╩═══════════════════════════════════════════════════════════╩══════════════════════════╝
