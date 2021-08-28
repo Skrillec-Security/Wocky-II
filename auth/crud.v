@@ -59,7 +59,7 @@ method -> userline()
 note -> get a user's line from database and return it in commas only
 */
 pub fn (mut a Crud) userline() string {
-	mut users := os.read_lines('/root/Wocky/db/users.db') or {
+	mut users := os.read_lines(os.getwd() + '/db/users.db') or {
 		panic("[x] Error, Couldn't read USER database!\r\n")
 	}
 	for user in users {
@@ -83,7 +83,7 @@ pub fn (mut a Crud) userline() string {
 }
 
 pub fn (mut a Crud) change_pw() string {
-	mut users := os.read_lines("/root/Wocky/db/users.db") or {
+	mut users := os.read_lines(os.getwd() + '/db/users.db') or {
 		panic("[x] Error, Couldn't read USER database!\r\n")
 	}
 	mut new_db := ''
@@ -105,7 +105,7 @@ pub fn (mut a Crud) change_pw() string {
 			}
 		}
 	}
-	os.write_file("/root/Wocky/db/users.db", new_db) or { lol() }
+	os.write_file(os.getwd() + '/db/users.db', new_db) or { lol() }
 	return "User: ${a.user} successfully updated!\r\n"
 }
 
@@ -116,7 +116,7 @@ method -> user_remove()
 note -> remove user from database!
 */
 pub fn (mut a Crud) user_remove() string {
-	mut fd := os.read_lines('/root/Wocky/db/users.db') or {
+	mut fd := os.read_lines(os.getwd() + '/db/users.db') or {
 		panic("[x] Error, Couldn't read USER database!")
 	}
 	mut found := false
@@ -142,7 +142,7 @@ arguments -> usr string, mtime string, conn string, admin string
 */
 pub fn (mut a Crud) user_update(usr string, mtime string, conn string, admin string) string {
 	// edit this function later to use struct strings instead of function argument strings
-	mut file_d := os.open_append('/root/Wocky/db/users.db') or {
+	mut file_d := os.open_append(os.getwd() + '/db/users.db') or {
 		panic("[x] Error, Couldn't read USER database!")
 	}
 	a.user = usr
@@ -158,7 +158,7 @@ pub fn (mut a Crud) user_update(usr string, mtime string, conn string, admin str
 pub fn (mut a Crud) add_user() string {
 	mut check_user := a.userline()
 	if check_user.contains("[x]") { 
-		mut ffd := os.open_append("/root/Wocky/db/users.db") or {
+		mut ffd := os.open_append(os.getwd() + '/db/users.db') or {
 			panic("[x] Error, Couldn't read USER database!")
 		}
 
@@ -186,7 +186,7 @@ pub fn (mut a RegisterCrud) user_register(usr string, pw string, token string) s
 	mut a_info := Crud{user: usr, pw: pw}
 	mut check_user := a_info.userline()
 	if check_user.contains("[x]") { return "[x] Error, User is already taken. Choose another username!\r\n" }
-	mut ffd := os.open("/root/Wocky/db/users.db") or {
+	mut ffd := os.open(os.getwd() + '/db/users.db') or {
 		panic("[x] Error, Couldn't read USER database!")
 	}
 
@@ -213,7 +213,7 @@ pub fn (mut a RegisterCrud) tokenline() string {
 }
 
 pub fn (mut a RegisterCrud) token_remove() string {
-	mut tokens := os.read_lines('/root/Wocky/db/tokens.db') or {
+	mut tokens := os.read_lines(os.getwd() + '/db/tokens.db') or {
 		panic("[x] Error, Couldn't read TOKEN database!]r]n")
 	}
 
