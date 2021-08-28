@@ -18,8 +18,11 @@ pub fn attack_cmd(mut socket net.TcpConn, arg []string, usern string) {
 	wuix.sock_place_text(mut socket, 6, 29, "${lines[1]}")
 	mut new := wutils.input_text_at_position(lines[2], 55, "\r\n").split("\n")
 	mut test := new[0]
-	wuix.sock_place_text(mut socket, 6, 29, "► ${test[1]}")
-	wuix.sock_place_text(mut socket, 6, 29, "► ${test[2]}")
+	mut c := 6
+	for i in test {
+		wuix.sock_place_text(mut socket, c, 29, "► ${i}")
+		c += 1
+	}
 
 }
 
