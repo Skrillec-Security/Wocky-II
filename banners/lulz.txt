@@ -1,42 +1,38 @@
-        {WHITE}╔══════════════════════════════════════════════════════════════════╗
-        ║                             {YELLOW}Methods{WHITE}                              ║
-        ╚═════════╦══════════════════════╦═══════════════════════╦═════════╝
-        ╔═════════╩════════╗   ╔═════════╩═════════╗   ╔═════════╩═════════╗
-        ║ ► {YELLOW}HOME{WHITE}           ║   ║ ► {YELLOW}HOME-SKY{WHITE}        ║   ║ ► {YELLOW}DNS{WHITE}             ║
-        ║ ► {YELLOW}HOME-GB{WHITE}        ║   ║ ► {YELLOW}DNS-MIXTURE{WHITE}     ║   ║ ► {YELLOW}LDAP{WHITE}            ║
-        ║ ► {YELLOW}DVR{WHITE}            ║   ║ ► {YELLOW}LDAP-1200{WHITE}       ║   ║ ► {YELLOW}NTP{WHITE}             ║
-        ║ ► {YELLOW}DNS{WHITE}            ║   ║ ► {YELLOW}100UP-RIOT{WHITE}      ║   ║ ► {YELLOW}SNMP{WHITE}            ║
-        ║ ► {YELLOW}KO{WHITE}             ║   ║ ► {YELLOW}TCP-STORM{WHITE}       ║   ║ ► {YELLOW}FIVEM-KILLER{WHITE}    ║
-        ║ ► {YELLOW}LDAP{WHITE}           ║   ║ ► {YELLOW}NFO-KILL{WHITE}        ║   ║ ► {YELLOW}FIVEM-CRUSH{WHITE}     ║
-        ║ ► {YELLOW}OVPN-V2{WHITE}        ║   ║ ► {YELLOW}HYPE-NFOV2{WHITE}      ║   ║ ► {YELLOW}FIVEM-CRUSHV2{WHITE}   ║
-        ║ ► {YELLOW}WSD{WHITE}            ║   ║ ► {YELLOW}HYPE-NFO{WHITE}        ║   ║ ► {YELLOW}NFO-XRS{WHITE}         ║
-        ║ ► {YELLOW}SNMP{WHITE}           ║   ║ ► {YELLOW}NFO-DOWN{WHITE}        ║   ║ ► {YELLOW}NFO-STORM{WHITE}       ║
-        ║ ► {YELLOW}CPU-KILL{WHITE}       ║   ║ ► {YELLOW}OVH-RIOT{WHITE}        ║   ║ ► {YELLOW}NFO-KILLER{WHITE}      ║
-        ║ ► {YELLOW}22-DESTROY{WHITE}     ║   ║ ► {YELLOW}OVH-FUCK{WHITE}        ║   ║ ► {YELLOW}NFO-KILLERV2{WHITE}    ║
-        ║ ► {YELLOW}OVH-UDP-V3{WHITE}     ║   ║ ► {YELLOW}VPN-KILLER{WHITE}      ║   ║ ► {YELLOW}OVH-ORPHIC{WHITE}      ║
-        ║ ► {YELLOW}PSN-RAPE{WHITE}       ║   ║ ► {YELLOW}VPN-KILLERV2{WHITE}    ║   ║ ► {YELLOW}OVH-ORPHICV2{WHITE}    ║
-        ║ ► {YELLOW}VPN-MIX-V3{WHITE}     ║   ║ ► {YELLOW}OVH-RAPED{WHITE}       ║   ║ ► {YELLOW}OVH-KILLER{WHITE}      ║
-        ║ ► {YELLOW}UDPBYPASS-V2{WHITE}   ║   ║ ► {YELLOW}TCP-RIOT{WHITE}        ║   ║ ► {YELLOW}OVH-SLAP{WHITE}        ║
-        ║ ► {YELLOW}OVH-ACID{WHITE}       ║   ║ ► {YELLOW}TCP-FUCKED{WHITE}      ║   ║ ► {YELLOW}VPN-KILLER{WHITE}      ║
-        ║ ► {YELLOW}100UP-ACID{WHITE}     ║   ║ ► {YELLOW}TCP-DROP{WHITE}        ║   ║ ► {YELLOW}VPN-KILLERV2{WHITE}    ║
-        ║ ► {YELLOW}100UP-STD{WHITE}      ║   ║ ► {YELLOW}FORTNITE{WHITE}        ║   ║ ► {YELLOW}TCP-XV{WHITE}          ║
-        ║ ► {YELLOW}NFO-ACID{WHITE}       ║   ║ ► {YELLOW}FORTNITE-SKY{WHITE}    ║   ║ ► {YELLOW}TCP-STORM{WHITE}       ║
-        ║ ► {YELLOW}NFO-EXPEL{WHITE}      ║   ║ ► {YELLOW}FN-RAPE{WHITE}         ║   ║ ► {YELLOW}TCP-BYPASS{WHITE}      ║
-        ║ ► {YELLOW}TEMPEST-ACID{WHITE}   ║   ║ ► {YELLOW}FN-CRUSH{WHITE}        ║   ║ ► {YELLOW}GAME-KILLALL{WHITE}    ║
-        ║ ► {YELLOW}TCP-SYNACK{WHITE}     ║   ║ ► {YELLOW}FN-FUCK{WHITE}         ║   ║ ► {YELLOW}GAME-STORM{WHITE}      ║
-        ║ ► {YELLOW}ARK-255{WHITE}        ║   ║ ► {YELLOW}HTTPS-RIP{WHITE}       ║   ║ ► {YELLOW}GAME-STORMV2{WHITE}    ║
-        ║ ► {YELLOW}ARK-LIFT{WHITE}       ║   ║ ► {YELLOW}HTTP-FREEZE{WHITE}     ║   ║ ► {YELLOW}100UP-PORTKILL{WHITE}  ║
-        ║ ► {YELLOW}FIVEM-BYPASS{WHITE}   ║   ║ ► {YELLOW}HTTP-FREEZEV2{WHITE}   ║   ║ ► {YELLOW}FORTNITE{WHITE}        ║
-        ║ ► {YELLOW}FORTNITE{WHITE}       ║   ╚═══════════════════╝   ║ ► {YELLOW}FN-FREEZE{WHITE}       ║
-        ║ ► {YELLOW}APEX{WHITE}           ║                           ║ ► {YELLOW}R6-RANKED{WHITE}       ║
-        ║ ► {YELLOW}RUST-GAME{WHITE}      ║                           ║ ► {YELLOW}COD-KILLER{WHITE}      ║
-        ║ ► {YELLOW}STD-RAW{WHITE}        ║                           ║ ► {YELLOW}HTTPS-STORM{WHITE}     ║
-        ║ ► {YELLOW}UDP-RAW{WHITE}        ║                           ║ ► {YELLOW}HTTPS-STORMV2{WHITE}   ║
-        ║ ► {YELLOW}SYN-RAW{WHITE}        ║                           ║ ► {YELLOW}KILL-ALL{WHITE}        ║
-        ║ ► {YELLOW}ACK-RAW{WHITE}        ║                           ║ ► {YELLOW}KILL-ALLV2{WHITE}      ║
-        ║ ► {YELLOW}TCP-BP{WHITE}         ║                           ║ ► {YELLOW}HOME-ORPHIC{WHITE}     ║
-        ║ ► {YELLOW}UDP-PLAIN{WHITE}      ║                           ║ ► {YELLOW}HTTPS-ORPHIC{WHITE}    ║
-        ║ ► {YELLOW}UDP-GM{WHITE}         ║                           ╚═══════════════════╝
-        ║ ► {YELLOW}UDP-RAND{WHITE}       ║      
-        ║ ► {YELLOW}PSH{WHITE}            ║      
+        ║ ► HOME           ║   ║ ► HOME-SKY        ║   ║ ► DNS             ║
+        ║ ► HOME-GB        ║   ║ ► DNS-MIXTURE     ║   ║ ► LDAP            ║
+        ║ ► DVR            ║   ║ ► LDAP-1200       ║   ║ ► NTP             ║
+        ║ ► DNS            ║   ║ ► 100UP-RIOT      ║   ║ ► SNMP            ║
+        ║ ► KO             ║   ║ ► TCP-STORM       ║   ║ ► FIVEM-KILLER    ║
+        ║ ► LDAP           ║   ║ ► NFO-KILL        ║   ║ ► FIVEM-CRUSH     ║
+        ║ ► OVPN-V2        ║   ║ ► HYPE-NFOV2      ║   ║ ► FIVEM-CRUSHV2   ║
+        ║ ► WSD            ║   ║ ► HYPE-NFO        ║   ║ ► NFO-XRS         ║
+        ║ ► SNMP           ║   ║ ► NFO-DOWN        ║   ║ ► NFO-STORM       ║
+        ║ ► CPU-KILL       ║   ║ ► OVH-RIOT        ║   ║ ► NFO-KILLER      ║
+        ║ ► 22-DESTROY     ║   ║ ► OVH-FUCK        ║   ║ ► NFO-KILLERV2    ║
+        ║ ► OVH-UDP-V3     ║   ║ ► VPN-KILLER      ║   ║ ► OVH-ORPHIC      ║
+        ║ ► PSN-RAPE       ║   ║ ► VPN-KILLERV2    ║   ║ ► OVH-ORPHICV2    ║
+        ║ ► VPN-MIX-V3     ║   ║ ► OVH-RAPED       ║   ║ ► OVH-KILLER      ║
+        ║ ► UDPBYPASS-V2   ║   ║ ► TCP-RIOT        ║   ║ ► OVH-SLAP        ║
+        ║ ► OVH-ACID       ║   ║ ► TCP-FUCKED      ║   ║ ► VPN-KILLER      ║
+        ║ ► 100UP-ACID     ║   ║ ► TCP-DROP        ║   ║ ► VPN-KILLERV2    ║
+        ║ ► 100UP-STD      ║   ║ ► FORTNITE        ║   ║ ► TCP-XV          ║
+        ║ ► NFO-ACID       ║   ║ ► FORTNITE-SKY    ║   ║ ► TCP-STORM       ║
+        ║ ► NFO-EXPEL      ║   ║ ► FN-RAPE         ║   ║ ► TCP-BYPASS      ║
+        ║ ► TEMPEST-ACID   ║   ║ ► FN-CRUSH        ║   ║ ► GAME-KILLALL    ║
+        ║ ► TCP-SYNACK     ║   ║ ► FN-FUCK         ║   ║ ► GAME-STORM      ║
+        ║ ► ARK-255        ║   ║ ► HTTPS-RIP       ║   ║ ► GAME-STORMV2    ║
+        ║ ► ARK-LIFT       ║   ║ ► HTTP-FREEZE     ║   ║ ► 100UP-PORTKILL  ║
+        ║ ► FIVEM-BYPASS   ║   ║ ► HTTP-FREEZEV2   ║   ║ ► FORTNITE        ║
+        ║ ► FORTNITE       ║   ╚═══════════════════╝   ║ ► FN-FREEZE       ║
+        ║ ► APEX           ║                           ║ ► R6-RANKED       ║
+        ║ ► RUST-GAME      ║                           ║ ► COD-KILLER      ║
+        ║ ► STD-RAW        ║                           ║ ► HTTPS-STORM     ║
+        ║ ► UDP-RAW        ║                           ║ ► HTTPS-STORMV2   ║
+        ║ ► SYN-RAW        ║                           ║ ► KILL-ALL        ║
+        ║ ► ACK-RAW        ║                           ║ ► KILL-ALLV2      ║
+        ║ ► TCP-BP         ║                           ║ ► HOME-ORPHIC     ║
+        ║ ► UDP-PLAIN      ║                           ║ ► HTTPS-ORPHIC    ║
+        ║ ► UDP-GM         ║                           ╚═══════════════════╝
+        ║ ► UDP-RAND       ║      
+        ║ ► PSH            ║      
         ╚══════════════════╝      
