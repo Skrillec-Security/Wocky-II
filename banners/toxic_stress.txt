@@ -1,0 +1,15 @@
+place_text(5,49)=ToxicStress API
+place_text(6,27)=╠════════════════╦════════════════════╦═════════════════════╣
+place_text(7,29)=► HOME         ║ ► PSN-RAPE         ║ ► FORTNITE
+place_text(8,29)=► HOME-GB      ║ ► VPN-MIX-V3       ║ ► APEX
+place_text(9,29)=► DVR          ║ ► UDPBYPASS-V2     ║ ► RUST-GAME
+place_text(10,29)=► DNS          ║ ► OVH-ACID         ║ ► STD-RAW
+place_text(11,29)=► KO           ║ ► 100UP-ACID       ║ ► UDP-RAW
+place_text(12,29)=► LDAP         ║ ► 100UP-STD        ║ ► SYN-RAW
+place_text(13,29)=► OVPN-V2      ║ ► NFO-ACID         ║ ► ACK-RAW
+place_text(14,29)=► WSD          ║ ► NFO-EXPEL        ║ ► TCP-BP
+place_text(15,29)=► SNMP         ║ ► TEMPEST-ACID     ║ ► UDP-PLAIN
+place_text(16,29)=► CPU-KILL     ║ ► TCP-SYNACK       ║ ► UDP-GM
+place_text(17,29)=► 22-DESTROY   ║ ► ARK-255          ║ ► UDP-RAND
+place_text(18,29)=► OVH-UDP-V3   ║ ► FIVEM-BYPASS     ║ ► PSH
+place_text(19,27)=╠════════════════╩════════════════════╩═════════════════════╣
