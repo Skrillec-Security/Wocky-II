@@ -60,3 +60,8 @@ pub fn (mut c_u Custom_utils) input_text_at_position(fullstr string, position in
 	}
 	return new_str_to_return
 }
+
+pub fn (mut c_u Custom_utils) str_contain_count(str string, find string) int {
+	mut cnt := (str.split(find)).len-1
+	return cnt
+}
