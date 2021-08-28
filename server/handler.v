@@ -11,11 +11,6 @@ import auth
 //cmds
 import commands
 
-
-// #include "@VROOT/c_headers/testfd.c"
-
-// fn C.r_keys(int) string
-
 pub struct ServerAssets {
 	pub mut:
 		empty_c int
@@ -84,7 +79,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 			}
 			"methods" {	
 				b.set_bannerfile("methods")
-				socket.write_string(b.color_banner()) or { 0 }
+				b.read_banner_text(mut socket)
 			}
 			"geo" {
 				commands.geo_cmd(mut socket, data)
@@ -105,6 +100,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 }
 
 pub fn admin_handler(mut socket net.TcpConn, data string, username string) {
+	mut wuix := wocky_uix.UIX_Func{}
 	mut arg := data.split(" ")
 	mut cmd := arg[0]
 	mut admin_cmd := arg[1]
@@ -115,7 +111,7 @@ pub fn admin_handler(mut socket net.TcpConn, data string, username string) {
 		}
 		"add" {
 			mut p := auth.Crud{user: arg[2], pw: arg[3], lvl: arg[4].int(), mtime: arg[5].int(), conn: arg[6].int(), admin: arg[7].int(), expiry: arg[8]}
-			socket.write_string(p.add_user()) or { 0 }
+			wuix.sock_place_text(mut socket, 5, 29, p.add_user())
 		} else { 
 			socket.write_string("[x] Error, No admin command found!\r\n") or { 0 }
 		}
