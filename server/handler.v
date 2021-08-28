@@ -81,6 +81,10 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 				b.set_bannerfile("methods")
 				b.read_banner_text(mut socket)
 			}
+			"toxic" {
+				b.set_bannerfile("toxic_stress")
+				b.read_banner_text(mut socket)
+			}
 			"geo" {
 				commands.geo_cmd(mut socket, data)
 			} 
