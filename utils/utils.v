@@ -19,3 +19,5 @@ pub fn (mut s Settings) read_settings() {
 		// }
 	}
 }
+
+// pub fn (mut s Settings) 
