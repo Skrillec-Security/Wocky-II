@@ -18,3 +18,7 @@ pub fn (mut b Box) set_mode(m int) {
 pub fn (mut b Box) append_arr(lines []string) {
 
 }
+
+pub fn (mut b Box) append_ln(line string) {
+
+}
