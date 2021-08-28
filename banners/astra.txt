@@ -1,0 +1,15 @@
+place_text(5,45)=Astra Security Team
+place_text(6,27)=╠═══════════════════════════╦═══════════════════════════════╣
+place_text(7,29)=► HOME-SKY                ║ ► VPN-KILLERV2
+place_text(8,29)=► DNS-MIXTURE             ║ ► OVH-RAPED
+place_text(9,29)=► LDAP-1200               ║ ► TCP-RIOT
+place_text(10,29)=► 100UP-RIOT              ║ ► TCP-FUCKED
+place_text(11,29)=► TCP-STORM               ║ ► TCP-DROP     
+place_text(12,29)=► NFO-KILL                ║ ► FORTNITE     
+place_text(13,29)=► HYPE-NFOV2              ║ ► FORTNITE-SKY 
+place_text(14,29)=► HYPE-NFO                ║ ► FN-RAPE      
+place_text(15,29)=► NFO-DOWN                ║ ► FN-CRUSH     
+place_text(16,29)=► OVH-RIOT                ║ ► FN-FUCK      
+place_text(17,29)=► OVH-FUCK                ║ ► HTTPS-RIP    
+place_text(18,29)=► VPN-KILLER              ║ ► HTTPS-FREEZER
+place_text(19,27)=╠═══════════════════════════╩═══════════════════════════════╣
