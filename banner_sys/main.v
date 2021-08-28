@@ -140,14 +140,10 @@ pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
 
 pub fn (mut b Banner) clear_screen(mut socket net.TcpConn) {
 	mut wuix := wocky_uix.UIX_Func{}
-	mut counter := 5
-	for i in 0..14{
-		wuix.sock_move_cursor(mut socket, counter, 28)
-		socket.write_string("                                                           ") or { 0 }
-		counter += 1
+	for i in 5..19 {
+		wuix.sock_place_text(mut socket, i, 27, "${config.White}║                                                           ║")
 	}
-	wuix.sock_place_text(mut socket, 4, 27, "╠═══════════════════════════════════════════════════════════╣")
-	wuix.sock_place_text(mut socket, 19, 27, "╠═══════════════════════════════════════════════════════════╣")
+	wuix.sock_place_text(mut socket, 19, 27, "${config.White}╠═══════════════════════════════════════════════════════════╣")
 	wuix.sock_move_cursor(mut socket, 21, 36)
 	socket.write_string("                                      ") or { 0 }
 }
@@ -157,11 +153,13 @@ pub fn (mut b Banner) loading_screen(mut socket net.TcpConn) {
 	mut wuix := wocky_uix.UIX_Func{}
 	b.set_bannerfile("logo")
 	socket.write_string(b.color_banner()) or { 0 }
-	wuix.sock_place_text(mut socket, 9, 50, config.Yellow + "[ Loading ..... ]")
+	wuix.sock_place_text(mut socket, 9, 50, config.Yellow + "[ Loading .... ]")
 	wuix.sock_move_cursor(mut socket, 10, 51)
-	for i in 0..15 {
-		socket.write_string("#") or { 0 }
+	mut s := 5
+	for i in 0..7 {
+		socket.write_string("##") or { 0 }
 		C.sleep_f(1)
 	}
+	wuix.sock_move_cursor(mut socket, 9, 66)
 	socket.write_string(config.Clear) or { 0 }
 }
