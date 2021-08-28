@@ -32,7 +32,7 @@ pub fn (mut a API_Crud) api_line(apiname string) (string, string, string, string
 }
 
 pub fn (mut a API_Crud) apis_with_method(method string) []string {
-	mut apis := os.read_lines("/root/Wocky/db/apis.db") or {
+	mut apis := os.read_lines(os.getwd() + "/db/apis.db") or {
 		panic("[x] Error, Unable to read API database!\r\n")
 	}
 	mut i := 0
@@ -58,7 +58,7 @@ pub fn (mut a API_Crud) apis_with_method(method string) []string {
 }
 
 pub fn (mut a API_Crud) add_api() string {
-	mut f := os.open_append("/root/Wocky/db/apis.db") or {
+	mut f := os.open_append(os.getwd() + "/db/apis.db") or {
 		panic("[x] Error, Unable to read API database!\r\n")
 	}
 	f.write("api_Name=${a.api_name}\napi_URL=${a.api_url}\napi_Methods=${a.api_methods}\napi_Funnels=${a.api_funnels}\n".bytes()) or { panic("[x] Error, Unable to write to API database!\r\n") }
@@ -66,7 +66,7 @@ pub fn (mut a API_Crud) add_api() string {
 }
 
 pub fn (mut a API_Crud) remove_api() string {
-	mut apis := os.read_lines("/root/Wocky/db/apis.db") or {
+	mut apis := os.read_lines(os.getwd() + "/db/apis.db") or {
 		panic("[x] Error, Unable to read API database!\r\n")
 	}
 	mut i := 0
@@ -89,7 +89,7 @@ pub fn (mut a API_Crud) remove_api() string {
 		i += 1
 	}
 
-	os.write_file("/root/Wocky/db/apis.db", new_db) or {
+	os.write_file(os.getwd() + "/db/apis.db", new_db) or {
 		panic("[x] Error, Unable to read API database!\r\n")
 	}
 	return "[x] API: $a.api_name successfully removed!\r\n"
