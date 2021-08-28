@@ -51,8 +51,20 @@ fn listener(port string) {
 	}
 }
 
+fn bot_listener(port string) {
+	mut server := net.listen_tcp(.ip6, ':562') or {
+		panic("[x] Error, Unable to start server!\r\n")
+	}
+	for {
+		mut socket := server.accept() or {
+			panic("[x] Error, Unable to accept the connection!\r\n")
+		}
+		go handle_client(mut socket)
+	}
+}
+
+
 fn handle_client(mut socket net.TcpConn) {
-	mut su := server.ServerUtils{}
 	mut u := utils.CLI{}
 	mut c_s := utils.Wocky_Settings{}
 	mut wuix := wocky_uix.UIX_Func{}
@@ -66,7 +78,7 @@ fn handle_client(mut socket net.TcpConn) {
 
 	/*
 	Logging In System!
-	*/ 
+	*/
 	socket.write_string("Username: ") or { 0 }
 	mut username := reader.read_line() or { "" }
 	username = username.replace("\r\n", "")
@@ -76,6 +88,8 @@ fn handle_client(mut socket net.TcpConn) {
 	mut a := auth.AuthInfo{username: username, password: password}
 	mut login := a.login()
 	if login.contains("[+]") {
+		//append user to arr
+		// config.current_users << [((config.server_info).len+1), username, socket, current_ips]
 		socket.write_string(login) or { 0 }
 	} else {
 		socket.write_string(login) or { 0 }
@@ -88,21 +102,17 @@ fn handle_client(mut socket net.TcpConn) {
 
 	
 	mut empty_c := 0
+	b.username = username
 	u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
 	b.loading_screen(mut socket)
 	socket.write_string(config.Clear) or { 0 }
-	b.set_username(username)
-	b.set_bannerfile("home")
+	b.set_bannerfile("ui")
 	b.start_banner_output(mut socket)
-	// fg.user << username
-	// fg.clients << mut socket
-	// su.list_active_user(mut socket, fg)
 	b.set_bannerfile("text")
-	b.read_banner_text(mut socket)
-	b.set_bannerfile("home_text")
 	b.read_banner_text(mut socket)
 	wuix.sock_move_cursor(mut socket, 21, 37)
 	for {
+		// u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
 		mut data := reader.read_line() or { "" }
 		data = data.replace("\r\n", "")
 		if data.len == 0 {
