@@ -13,6 +13,17 @@ pub struct Box{
 		mode int
 }
 
+pub struct Table{
+	pub mut:
+		table string
+		rows int
+		column int
+		//Lines u want to add
+		lines []string
+		line string
+		mode int
+}
+
 const (
 	left_top_corner = "╔"
 	right_top_corner = "╗"
@@ -74,6 +85,8 @@ pub fn (mut b Box) create_box() {
 
 	println("${first_line}\r\n${boxx}\r\n${last_line}")
 }
+
+
 
 pub fn (mut b Box) append_arr(lines []string) {
 
