@@ -9,6 +9,8 @@ pub struct UIX_Func {
 		last_column string
 		text string
 }
+
+
 pub fn (mut uix UIX_Func) sock_change_size(mut socket net.TcpConn, r int, c int) {
 	socket.write_string("\033[8;${r};${c}t") or { 0 }
 }
