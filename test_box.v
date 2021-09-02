@@ -2,11 +2,29 @@ import banner_sys
 
 import os
 fn main() {
-	lul := (os.args).clone()
-	if lul.len != 3 {
-		println("[x] Error, Invalid Arugment\r\nUsage: ${lul[0]} <width> <rows>")
-		exit(0)
+	mut width := os.input("Box Width: ")
+	mut rows := os.input("Box Rows: ")
+	mut b := banner_sys.Box{width: width.int(), rows: rows.int()}
+	mut test := b.create_box()
+	println("\033[2J\033[1;1H$test")
+	mut new_c := 1 
+	for i in 0..(rows.int()) {
+		mut input_data := os.input("TermUIX >> ")
+		if input_data == "addtext" {
+			mut text := os.input("Text to add to box?: ")
+			mut row := os.input("What row do you want the text on?: ")
+			mut column := os.input("What column do you want the text to start on that row?: ")
+			test = b.append_text_in_position(test, row.int(), column.int(), text.trim_space(), new_c)
+			println("\033[2J\033[1;1H$test")
+		} else if input_data == "resize" {
+			width = os.input("Box Width: ")
+			rows = os.input("Box Rows: ")
+			b.set_box_size(width.int(), rows.int())
+			test = b.create_box()
+			println("\033[2J\033[1;1H$test")
+		} else {
+			println("no command found")
+		}
+		new_c += 1
 	}
-	mut b := banner_sys.Box{width: lul[1].int(), rows: lul[2].int()}
-	b.create_box()
 }
