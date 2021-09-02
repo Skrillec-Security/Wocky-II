@@ -27,13 +27,15 @@ pub struct Test{
 pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 	mut b := banner_sys.Banner{username: username, file: "ui"}
 	mut wuix := wocky_uix.UIX_Func{}
+	mut c_s := utils.Wocky_Settings{}
 	b.clear_screen(mut socket)
 	if data.len == 0 {
 		socket.write_string(config.Clear) or { 0 }
 		b.start_banner_output(mut socket)
 		b.set_bannerfile("text")
 		b.read_banner_text(mut socket)
-		wuix.sock_move_cursor(mut socket, 21, 37)
+		mut hostname_cursor := c_s.get_settings()[1].split(",")
+		wuix.sock_move_cursor(mut socket, hostname_cursor[0], hostname_cursor[1])
 	} else {
 		if data == "" { return }
 		/*
@@ -102,7 +104,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 			}
 		}
 
-		wuix.sock_move_cursor(mut socket, 21, 37)
+		wuix.sock_move_cursor(mut socket, hostname_cursor[0], hostname_cursor[1])
 		println(data) // send this to the new logger when finished
 	}
 }
