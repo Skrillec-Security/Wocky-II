@@ -106,11 +106,12 @@ fn handle_client(mut socket net.TcpConn) {
 	u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
 	b.loading_screen(mut socket)
 	socket.write_string(config.Clear) or { 0 }
-	b.set_bannerfile("ui")
+	b.set_bannerfile("home")
 	b.start_banner_output(mut socket)
 	b.set_bannerfile("text")
 	b.read_banner_text(mut socket)
-	wuix.sock_move_cursor(mut socket, 21, 37)
+	mut hostname_cursor := c_s.get_settings()[1].split(",")
+	wuix.sock_move_cursor(mut socket, hostname_cursor[0], hostname_cursor[1])
 	for {
 		// u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
 		mut data := reader.read_line() or { "" }
