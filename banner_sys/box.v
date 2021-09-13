@@ -116,16 +116,16 @@ pub fn (mut b Box) append_text_in_position(box string, row int, c int, input_tex
 	mut new_box := ""
 	mut cnt := 0
 	for i in rows {
-		if cnt == row {
+		if cnt == row { // find the row user wants their text on 
 			mut fix := i.replace("║", "")
 			mut spaces := fix.len - input_text.len
 			mut g := "${vertical_line} "
 			for s in 0..(spaces-test) {
 				println("$s")
-				if s == c {
-					g += input_text
+				if s == c { // find the column user wants their text position in the row
+					g += input_text // append text
 				} else {
-					g += " "
+					g += " " // add spaces back in
 				}
 			}
 			g += "${vertical_line}"
