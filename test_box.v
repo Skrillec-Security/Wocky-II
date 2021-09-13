@@ -1,10 +1,13 @@
 import banner_sys
+import wocky_uix
 
 import os
 fn main() {
 	mut width := os.input("Box Width: ")
 	mut rows := os.input("Box Rows: ")
 	mut b := banner_sys.Box{width: width.int(), rows: rows.int()}
+	mut wuix := wocky_uix.UIX_Func{}
+	
 	mut test := b.create_box()
 	println("\033[2J\033[1;1H$test")
 	mut new_c := 1 
@@ -22,6 +25,10 @@ fn main() {
 			b.set_box_size(width.int(), rows.int())
 			test = b.create_box()
 			println("\033[2J\033[1;1H$test")
+		} else if input_data == "addbox" {
+			for {
+
+			}
 		} else {
 			println("no command found")
 		}
