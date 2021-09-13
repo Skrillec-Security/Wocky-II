@@ -111,7 +111,7 @@ fn handle_client(mut socket net.TcpConn) {
 	b.set_bannerfile("text")
 	b.read_banner_text(mut socket)
 	mut hostname_cursor := c_s.get_settings()[1].split(",")
-	wuix.sock_move_cursor(mut socket, hostname_cursor[0], hostname_cursor[1])
+	wuix.sock_move_cursor(mut socket, hostname_cursor[0].int(), hostname_cursor[1].int())
 	for {
 		// u.set_title(mut socket, "${c_s.get_settings()[1]} | User: $username")
 		mut data := reader.read_line() or { "" }
