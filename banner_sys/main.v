@@ -140,6 +140,7 @@ pub fn (mut b Banner) read_banner_text(mut socket net.TcpConn) {
 
 pub fn (mut b Banner) clear_screen(mut socket net.TcpConn) {
 	mut wuix := wocky_uix.UIX_Func{}
+	wuix.sock_place_text(mut socket, 3, 27, "${config.White}╠═══════════════════════════════════════════════════════════╣")
 	for i in 5..19 {
 		wuix.sock_place_text(mut socket, i, 27, "${config.White}║                                                           ║")
 	}
