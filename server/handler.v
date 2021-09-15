@@ -36,7 +36,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 		b.start_banner_output(mut socket)
 		b.set_bannerfile("text")
 		b.read_banner_text(mut socket)
-		wuix.sock_move_cursor(mut socket, hostname_cursor[0].int(), hostname_cursor[1].int())
+		wuix.sock_move_cursor(mut socket, 21, 37)
 	} else {
 		if data == "" { return }
 		/*
@@ -105,7 +105,7 @@ pub fn cmd_handler(mut socket net.TcpConn, data string, username string) {
 			}
 		}
 
-		wuix.sock_move_cursor(mut socket, hostname_cursor[0].int(), hostname_cursor[1].int())
+		wuix.sock_move_cursor(mut socket, 21, 37)
 		println(data) // send this to the new logger when finished
 	}
 }
