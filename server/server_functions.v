@@ -11,7 +11,7 @@ pub struct Sessions {
 		clients []net.TcpConn
 }
 
-pub fn (mut su ServerUtils) list_active_user(mut socket net.TcpConn, p Sessions) {
+pub fn (mut su ServerUtils) list_active_user(mut socket net.TcpConn, mut p Sessions) {
 	mut wuix := wocky_uix.UIX_Func{}
 	mut row := 5
 	mut s := 0
